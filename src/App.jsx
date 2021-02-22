@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import history from "./utils/history"
+import { Router, Switch, Route, Link } from "react-router-dom";
+import history from "./utils/history";
 import "./App.css";
 
 const Login = lazy(() => import("./Login"));
@@ -8,7 +8,7 @@ const Entervalidation = lazy(() => import("./Entervalidation"));
 const Page = lazy(() => import("./Page"));
 function App() {
   return (
-    <Router history ={history}>
+    <Router history={history}>
       <div>
         {/* <ul>
             <li>

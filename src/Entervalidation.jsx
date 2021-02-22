@@ -2,12 +2,14 @@ import React from "react";
 import "./Entervalidation.css";
 import history from "./utils/history";
 import ajax from "./utils/ajax";
+import querystring from 'query-string';
 import { Route, Router } from "react-router-dom";
 export default class Entervalidation extends React.Component {
   state = { validation: "" };
   shuruValidation = (e) => {
     const value = e.target.value;
     const reg = /^\d*?$/;
+
     if ((reg.test(value) && value.length < 5) || value === "") {
       this.setState(
         {
@@ -17,22 +19,22 @@ export default class Entervalidation extends React.Component {
           console.log("shuru", this.state.validation);
         }
       );
-      if (value === 4) {
-        this.props.history.push({
-          pathname: "./login",
-          query: { loginphone: loginnumber},
-        });
-        // Router.push({
-        //     pathname:'/login',
-        //     state:{loginphone: 15520817315}
-        //     })
-        const lphone = this.props.location.query.loginphone;
+      if (value.length === 4) {
+        const queryString = require("query-string");
+
+        console.log(window.location.search);
+       
+
+        const parsed = queryString.parse(window.location.search);
+        console.log(parsed);
+       
+        
         ajax(`authentication/openLogin`, "get", {
           type: 1,
-          phone: loginnumber,
+           phone: parsed.phone,
           code: this.state.validation,
-          debug:1,
-          key:"value"
+          debug: 1,
+          
         }).then(
           (rs) => {
             console.log("validation success", rs);
