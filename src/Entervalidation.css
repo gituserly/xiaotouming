@@ -1,0 +1,82 @@
+body {
+    background: #303B45;
+}
+
+.content-va {
+    width: 100%;
+    background: #303B45;
+}
+
+.header-va {
+    padding: 34px 24px;
+}
+
+.img-va {
+    background: url(./pictures/back.png) no-repeat;
+    background-size: 15px 15px;
+    height: 15px;
+    width: 100%;
+    margin-bottom: 26px;
+    position: relative;
+    left: 3.5px;
+}
+
+.middle-va {
+    height: 42px;
+    font-size: 30px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 250;
+    color: #CED2D4;
+    line-height: 42px;
+    margin-bottom: 110px;
+}
+
+.footer-va {
+    width: 100%;
+    text-align: center;
+    height: 18.5px;
+    font-size: 13px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 150;
+    color: #BC9A7A;
+    line-height: 18.5px;
+}
+
+.input-va {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 47px;
+}
+
+.input-value {
+    border: 0px;
+}
+
+
+/* 
+.box {
+    height: 50px;
+    margin: 100px auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    color: #CED2D4;
+}
+
+.box>li {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+}
+
+.box>li>span {
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: #000;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-left: -25px;
+} */

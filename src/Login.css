@@ -1,0 +1,112 @@
+body {
+    background: #303B45;
+}
+
+.img1 {
+    background: url(./pictures/back.png) no-repeat;
+    background-size: 16px 16px;
+    height: 16px;
+    margin-bottom: 26px;
+}
+
+.img2 {
+    background: url(./pictures/wechat.png) no-repeat center;
+    background-size: 30px 30px;
+    height: 30px;
+    position: relative;
+    left: 4px;
+    margin-bottom: 16px;
+}
+
+.content {
+    width: 100%;
+}
+
+.main {
+    padding: 34px 32px 97.5px 24px;
+}
+
+.login-xtm {
+    height: 42px;
+    font-size: 28px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 250;
+    color: #CED2D4;
+    line-height: 42px;
+    margin-bottom: 68px;
+}
+
+.login-input {
+    display: flex;
+    margin-bottom: 59px;
+}
+
+.shuzi {
+    width: 33px;
+    height: 21.5px;
+    font-size: 18px;
+    font-family: Helvetica-Light, Helvetica;
+    font-weight: 150;
+    color: #CED2D4;
+    line-height: 21.5px;
+    letter-spacing: 0.5px;
+    padding: 4px 0px;
+}
+
+.input-text {
+    height: 25px;
+    font-size: 18px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 150;
+    color: #8F959B;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    background: #303B45;
+    border: 0px;
+    outline: none;
+    margin-left: 50px;
+}
+
+.yanzheng-button {
+    width: 100%;
+    height: 48px;
+    background: #31A584;
+    border-radius: 48px;
+    margin-bottom: 12px;
+    border: 0px;
+}
+
+.getyanzhengma {
+    width: 90px;
+    height: 25px;
+    font-size: 18px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 150;
+    color: #FFFFFF;
+    line-height: 25px;
+}
+
+.tishi {
+    height: 16.5px;
+    font-size: 12px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 150;
+    color: #8F959B;
+    line-height: 16.5px;
+    text-align: center;
+    margin-bottom: 150.5px;
+    position: relative;
+    left: 4px;
+}
+
+.wechat-login {
+    height: 18.5px;
+    font-size: 13px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 200;
+    color: #CED2D4;
+    line-height: 18.5px;
+    text-align: center;
+    position: relative;
+    left: 4px;
+}
