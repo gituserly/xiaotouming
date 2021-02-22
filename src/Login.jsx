@@ -49,7 +49,7 @@ export default class Login extends React.Component {
           ajax(`authentication/code?phone=${this.state.shuru}&sign=53ee50718b01b71c03fa47d352e0b667`,"get")
           .then((rs)=>{
             console.log(" login success",rs);
-            history.push('/entervalidation')  
+            history.push(`/entervalidation?phone=${this.state.shuru}`)
           },(rej)=>{console.log('reject',rej)})
            
             }

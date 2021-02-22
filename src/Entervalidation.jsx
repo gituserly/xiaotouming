@@ -18,18 +18,18 @@ export default class Entervalidation extends React.Component {
         }
       );
       if (value === 4) {
-        // this.props.history.push({
-        //   pathname: "./login",
-        //   query: { loginphone: loginnumber},
-        // });
-        Router.push({
-            pathname:'/login',
-            state:{loginphone: 15520817315}
-            })
-        const lphone = this.props.location.state.loginphone;
+        this.props.history.push({
+          pathname: "./login",
+          query: { loginphone: loginnumber},
+        });
+        // Router.push({
+        //     pathname:'/login',
+        //     state:{loginphone: 15520817315}
+        //     })
+        const lphone = this.props.location.query.loginphone;
         ajax(`authentication/openLogin`, "get", {
           type: 1,
-          phone: lphone,
+          phone: loginnumber,
           code: this.state.validation,
           debug:1,
           key:"value"
