@@ -21,8 +21,8 @@ export default class Login extends React.Component {
     
   };
   render() {
-    const loginnumber=this.state.shuru
-    console.log("login number",loginnumber)
+    
+    
     return (
       <div className="content">
         <div className ="main"> 
@@ -36,13 +36,12 @@ export default class Login extends React.Component {
           <input className="input-text"
             type="text"
             placeholder="请输入手机号"
-          
             value={this.state.shuru}
             onChange={this.changeShuru}
           />
           </div>
         </div>
-        <div>
+        <div className ="y-t">
           <button className="yanzheng-button"
             onClick={() => {
               

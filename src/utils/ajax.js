@@ -1,10 +1,25 @@
-export default function ajax(url, xtmmethod, xtmbody) {
+export default function ajax(url, xtmmethod, xtmbody = {}) {
     return new Promise((resolve, reject) => {
-        const baseUrl = "http://xtm.xiaoyunqiang.top/";
-        fetch(baseUrl + url, {
-                method: xtmmethod,
-                body: JSON.stringify(xtmbody),
-            })
+        const options = {
+            method: xtmmethod,
+            headers: {
+                token: localStorage.getItem('token'),
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+        }
+        const baseUrl = 'http://xtm.xiaoyunqiang.top/'
+        if (xtmmethod === 'POST') {
+            const formBody = [];
+            for (let key in xtmbody) {
+                const encodedKey = encodeURIComponent(key);
+                const encodedValue = encodeURIComponent(xtmbody[key]);
+                formBody.push(`${encodedKey}=${encodedValue}`);
+            }
+            options.body = formBody.join('&')
+        }
+
+        fetch(
+                baseUrl + url, options)
             .then(function(res) {
                 if (res.status === 200) {
                     return res.json();
@@ -13,13 +28,13 @@ export default function ajax(url, xtmmethod, xtmbody) {
                 }
             })
             .then(function(data) {
-                console.log(12, data);
                 if (data.code === 0) {
-                    resolve(data);
+                    resolve(data.data);
+
                 }
             })
             .catch(function(err) {
                 reject(err);
             });
-    });
+    })
 }

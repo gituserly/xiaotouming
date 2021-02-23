@@ -23,7 +23,7 @@ body {
 }
 
 .main {
-    padding: 34px 32px 97.5px 24px;
+    padding: 34px 24px 97.5px 24px;
 }
 
 .login-xtm {
@@ -65,6 +65,10 @@ body {
     border: 0px;
     outline: none;
     margin-left: 50px;
+}
+
+.y-t {
+    padding: 0px 8px;
 }
 
 .yanzheng-button {

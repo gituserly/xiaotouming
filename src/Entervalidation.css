@@ -43,13 +43,58 @@ body {
 }
 
 .input-va {
-    display: flex;
-    justify-content: center;
     margin-bottom: 47px;
+    width: 232px;
+    margin: 0 auto;
 }
 
 .input-value {
+    display: block;
     border: 0px;
+    line-height: 35px;
+    font-size: 24px;
+    appearance: none;
+    outline: 0;
+    width: 232px;
+    letter-spacing: 50px;
+    padding: 0 15px;
+    /* background: border-box; */
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.input-border {
+    position: relative;
+    top: -2px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-border span {
+    width: 40px;
+    height: 2px;
+    background-color: red;
+}
+
+.fail-va {
+    background: red;
+    width: 100%;
+    height: 75px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+}
+
+.fail-text {
+    display: inline-block;
+    width: 131px;
+    height: 18.5px;
+    font-size: 13px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 150;
+    color: #FFFFFF;
+    line-height: 18.5px;
+    margin-top: 33px;
 }
 
 
