@@ -3,15 +3,19 @@ import { Router, Switch, Route, Link } from "react-router-dom";
 import history from "./utils/history";
 import "./App.css";
 
-const Login = lazy(() => import("./Login"));
-const Entervalidation = lazy(() => import("./Entervalidation"));
-const Page = lazy(() => import("./Page"));
+const Login = lazy(() => import("./pages/Login"));
+const Entervalidation = lazy(() => import("./pages/Entervalidation"));
+const Page = lazy(() => import("./pages/Page"));
+const Mypage = lazy(() => import("./pages/Mypage"));
+const Releaseinstant = lazy(() => import("./pages/Releaseinstant"));
+const Instantdetails = lazy(() => import("./pages/Instantdetails"));
+const Instantsquare = lazy(() => import("./pages/Instantsquare"));
 function App() {
   return (
     <Router history={history}>
-      <div>
+
         {/* <ul>
-            <li>
+            <li>ages
               <Link to="/login">Login</Link>
             </li>
             <li>
@@ -23,9 +27,22 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/entervalidation" component={Entervalidation} />
             <Route exact path="/page" component={Page} />
+            <Route exact path="/mypage" component={Mypage} />
+            
+            <Route
+              exact
+              path="/mypage/releaseinstant"
+              component={Releaseinstant}
+            />
+            <Route
+              exact
+              path="/mypage/instantdetails"
+              component={Instantdetails}
+            />
+             <Route exact path="/mypage/instantsquare" component={Instantsquare} />
           </Switch>
         </Suspense>
-      </div>
+  
     </Router>
   );
 }

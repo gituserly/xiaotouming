@@ -1,0 +1,126 @@
+.instantsquare-content {
+    width: 100%;
+    background: #303B45;
+    min-height: 100vh;
+}
+
+.instantsquare-main {
+    padding: 34px 24px;
+}
+
+.instantsquare-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 26px;
+}
+
+.instantsquare-img1 {
+    background: url(../pictures/back.png ) no-repeat;
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+    border: dashed 1px white;
+}
+
+.instantsquare-img2 {
+    background: url(../pictures/nav_icon_meassage.png) no-repeat;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    border: dashed 1px white;
+}
+
+.instantsquare-keyword {
+    height: 42px;
+    font-size: 30px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #CED2D4;
+    line-height: 42px;
+    margin-bottom: 31px;
+}
+
+ul,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    border-bottom: 1px solid #2B353D;
+}
+
+.instantsquare-li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.instantsquare-li-header {
+    display: flex;
+}
+
+.instantsquare-li-userpicture {
+    width: 20px;
+    height: 20px;
+    margin: 5.5px 8px 5.5px 0px;
+}
+
+.instantsquare-li-username {
+    height: 18.5px;
+    font-size: 13px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #8F959B;
+    line-height: 18.5px;
+}
+
+.instantsquare-li-dayago {
+    height: 12.5px;
+    font-size: 9px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #747A80;
+    line-height: 12.5px;
+}
+
+.instantsquare-li-shenlue {
+    color: white;
+}
+
+.instantsquare-li-middle {
+    width: 100%;
+    font-size: 16px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #CED2D4;
+    line-height: 28px;
+    margin-bottom: 192px;
+}
+
+.instantsquare-li-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.instantsquare-li-lik-mes {
+    display: flex;
+}
+
+.instantsquare-li-time,
+.instantsquare-li-like,
+.instantsquare-li-message {
+    height: 16.5px;
+    font-size: 12px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #747A80;
+    line-height: 16.5px;
+}
+
+.instantsquare-li-like {
+    margin-right: 28px;
+}

@@ -3,14 +3,14 @@ body {
 }
 
 .img1 {
-    background: url(./pictures/back.png) no-repeat;
+    background: url(../pictures/back.png) no-repeat;
     background-size: 16px 16px;
     height: 16px;
     margin-bottom: 26px;
 }
 
 .img2 {
-    background: url(./pictures/wechat.png) no-repeat center;
+    background: url(../pictures/wechat.png) no-repeat center;
     background-size: 30px 30px;
     height: 30px;
     position: relative;
@@ -78,6 +78,7 @@ body {
     border-radius: 48px;
     margin-bottom: 12px;
     border: 0px;
+    outline: none;
 }
 
 .getyanzhengma {
