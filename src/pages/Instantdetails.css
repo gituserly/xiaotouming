@@ -1,6 +1,7 @@
 .instantdetails-content {
     background-color: #303B45;
-    min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .instantdetails-main {
@@ -217,4 +218,103 @@ li {
     color: #BC9A7A;
     line-height: 20px;
     letter-spacing: 0.5px;
+}
+
+.instantsquare-display {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 0px 27px;
+    background: #2E353B;
+}
+
+.instantsquare-display-header,
+.instantsquare-display-middle {
+    display: flex;
+}
+
+.instantsquare-display-header {
+    border-bottom: 1px #262C32 solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.instantsquare-display-middle {
+    border-bottom: 1px #262C32 solid;
+    padding-bottom: 10px;
+    margin-bottom: 25.5px;
+}
+
+.instantsquare-display-header-wechat,
+.instantsquare-display-header-friends,
+.instantsquare-display-header-fcous,
+.instantsquare-display-header-unlike,
+.instantsquare-display-header-jubao {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.instantsquare-display-header-imgwechat {
+    background: url("../pictures/icon_wechat.png") no-repeat;
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+}
+
+.instantsquare-display-header-imgfriends {
+    background: url("../pictures/pyq.png") no-repeat;
+    background-size: 45px 45px;
+    width: 45px;
+    height: 45px;
+}
+
+.instantsquare-display-header-imgfcous {
+    background: url("../pictures/icon_attention_normal.png") no-repeat;
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+}
+
+.instantsquare-display-header-imgunlike {
+    background: url("../pictures/不喜欢.png") no-repeat;
+    background-size: 45px 45px;
+    width: 45px;
+    height: 45px;
+}
+
+.instantsquare-display-header-imgjubao {
+    background: url("../pictures/report.png") no-repeat;
+    background-size: 45px 45px;
+    width: 45px;
+    height: 45px;
+}
+
+.instantsquare-display-header-word {
+    width: 52px;
+    height: 18.5px;
+    font-size: 13px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #747A80;
+    line-height: 18.5px;
+}
+
+.instantsquare-display-header-friends,
+.instantsquare-display-header-unlike,
+.instantsquare-display-header-jubao {
+    margin-left: 52px;
+}
+
+.instantsquare-display-footer {
+    height: 21px;
+    font-size: 15px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #747A80;
+    line-height: 21px;
+    text-align: center;
+    padding-bottom: 15px;
 }

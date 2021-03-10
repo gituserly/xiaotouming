@@ -10,17 +10,55 @@ export default class Instantdetails extends React.Component {
     iswiritethought: false,
     thoughtlist: [],
     thought: "",
-    thoughtcount:null
+    thoughtcount: 0,
+    commentLoading: false,
+    commentPage: 0,
+    isdispaly:false
+    // comment: {
+    //   list: [],
+    //   total: 0,
+    //   page: 1,
+    //   loading: false
+    // }
   };
   componentDidMount() {
-    this.getInstansdetails(1);
+    this.getInstansdetails();
+    this.getCommentList();
   }
 
-  getInstansdetails = (page) => {
+  getCommentList = async (page = 1) => {
+    const queryString = require("query-string");
+    const parsed = queryString.parse(window.location.search);
+    try {
+      this.setState({ commentLoading: true });
+      const res = await ajax(
+        `comment?forum_id=${
+          parsed.id
+        }&comment_id=441&list_type=1&page=${page}&user_id=${localStorage.getItem(
+          "userId"
+        )}`,
+        "GET"
+      );
+      console.log("get thoughtlist success ", res);
+      this.setState(
+        {
+          thoughtlist: [...this.state.thoughtlist, ...res.list],
+          thoughtcount: res.total,
+          commentPage: page,
+        },
+        () => console.log("thoughtlist", this.state.thoughtlist)
+      );
+    } catch (error) {
+      console.log("get thoughtlist fail ", error);
+    } finally {
+      this.setState({ commentLoading: false });
+    }
+  };
+  getInstansdetails = () => {
     const queryString = require("query-string");
     const parsed = queryString.parse(window.location.search);
     ajax(
-      `forum/${parsed.userid}?user_id=${localStorage.getItem("userId")}`,
+      `forum/${parsed.id}?user_id=${localStorage.getItem("userId")}`,
       "GET"
     ).then(
       (rs) => {
@@ -31,41 +69,22 @@ export default class Instantdetails extends React.Component {
         console.log("enter instant details fail", rej);
       }
     );
-    ajax(
-      `comment?forum_id=${
-        parsed.userid
-      }&comment_id=441&list_type=1&page=${page}&user_id=${localStorage.getItem(
-        "userId"
-      )}`,
-      "GET"
-    ).then(
-      (res) => {
-        console.log("get thoughtlist success ", res);
-        this.setState({ thoughtlist: res.list ,thoughtcount:res.total}, () =>
-          console.log("thoughtlist", this.state.thoughtlist)
-        );
-      },
-      (rej) => {
-        console.log("get thoughtlist fail ", rej);
-      }
-    );
   };
   writeThought = () => {
     const queryString = require("query-string");
     const parsed = queryString.parse(window.location.search);
-    console.log(parsed);
+  
     const { thought } = this.state;
-    
+
     ajax(`comment`, "POST", {
       user_id: localStorage.getItem("userId"),
       comment_content: thought,
-      forum_id: parsed.userid,
+      forum_id: parsed.id,
       privacy_type: 1,
     }).then(
       (res) => {
         console.log("release thought success ", res);
-         this.setState({ iswiritethought: false }  
-        );
+        this.setState({ iswiritethought: false });
         ajax(
           `comment?forum_id=${
             parsed.userid
@@ -76,8 +95,9 @@ export default class Instantdetails extends React.Component {
         ).then(
           (resolve) => {
             console.log("get thoughtlist success ", res);
-            this.setState({ thoughtlist: resolve.list,thoughtcount:resolve.total }, () =>
-              console.log("thoughtlist", this.state.thoughtlist)
+            this.setState(
+              { thoughtlist: resolve.list, thoughtcount: resolve.total },
+              () => console.log("thoughtlist", this.state.thoughtlist)
             );
           },
           (rej) => {
@@ -90,7 +110,7 @@ export default class Instantdetails extends React.Component {
       }
     );
   };
-  renderPublicReadNothought = () => {
+  renderPublicReadNothought = (text) => {
     return (
       <div className="instantdetails-thoughtcontent">
         <div className="instantdetails-thought">
@@ -108,6 +128,7 @@ export default class Instantdetails extends React.Component {
             </button>
           </div>
         </div>
+        <div className="instantdetails-thought-instruction1">{text}</div>
       </div>
     );
   };
@@ -118,7 +139,6 @@ export default class Instantdetails extends React.Component {
   );
 
   renderPublicReadThought = () => {
-   
     return (
       <div className="instantdetails-thoughtcontent">
         <div className="instantdetails-thought">
@@ -139,24 +159,74 @@ export default class Instantdetails extends React.Component {
         <div>
           <ul>
             {this.state.thoughtlist.map((item) => (
-              
               <li className="li-instantdatails" key={item.comment.id}>
-                 
                 <div className="thought-u">
                   <div className="instantdetails-username">
                     {item.comment.forum_nike_name}
-                  
                   </div>
-                  <div className="instantdetails-username">msg {item.comment.reply_count}</div>
+                  <div className="instantdetails-username">
+                    msg {item.comment.reply_count}
+                  </div>
                 </div>
                 <p className="thought-p">{item.comment.comment_content}</p>
               </li>
             ))}
           </ul>
         </div>
-        <div className="instantdatails-thoughtcount">查看全部{this.state.thoughtcount}条想法</div>
+        <div className="instantdatails-thoughtcount">
+          查看全部{this.state.thoughtcount}条想法
+        </div>
       </div>
     );
+  };
+  renderDisplay=()=><div className="instantsquare-display">
+  <div className ="instantsquare-display-header">
+    <div className ="instantsquare-display-header-wechat">
+      <div className ="instantsquare-display-header-imgwechat" ></div>
+      <div className ="instantsquare-display-header-word">微信好友</div>
+    </div>
+    <div className ="instantsquare-display-header-friends">
+    <div className ="instantsquare-display-header-imgfriends"></div>
+      <div className ="instantsquare-display-header-word">朋友圈</div>
+    </div>
+  </div>
+  <div className ="instantsquare-display-middle">
+    <div className ="instantsquare-display-header-fcous">
+    <div className ="instantsquare-display-header-imgfcous"></div>
+      <div className ="instantsquare-display-header-word">关注</div>
+    </div>
+    <div className ="instantsquare-display-header-unlike">
+    <div className ="instantsquare-display-header-imgunlike"></div>
+      <div className ="instantsquare-display-header-word">不喜欢</div>
+    </div>
+    <div className="instantsquare-display-header-jubao">
+    <div className ="instantsquare-display-header-imgjubao"></div>
+      <div className ="instantsquare-display-header-word">举报</div>
+    </div>
+  </div>
+  <div className ="instantsquare-display-footer">取消</div>
+</div>
+  onScroll = (e) => {
+    // console.log("e.target",e.target)
+    // 在Chrome中可以用$0表示选中的div，默认为body
+    const offsetHeight = e.target.offsetHeight;
+    //offsetHeight 页面高度
+    const scrollHeight = e.target.scrollHeight;
+    console.log("scrollHeight ",scrollHeight)
+    //scrollHeight 滑动高度
+    const scrollTop = e.target.scrollTop;
+    console.log("scrollTop ",scrollTop )
+    // scrollTop  滑动位置距离顶部的距离
+    const distance = scrollHeight - offsetHeight;
+    const maxPage = Math.ceil(this.state.thoughtcount / 10);
+    // cell进一，floor 退一 取整数
+    if (
+      distance - scrollTop < 5 &&
+      !this.state.commentLoading &&
+      this.state.commentPage + 1 <= maxPage
+    ) {
+      this.getCommentList(this.state.commentPage + 1);
+    }
   };
   render() {
     if (!this.state.list) return null;
@@ -168,19 +238,20 @@ export default class Instantdetails extends React.Component {
     //     </div>
     //   </div>
     // );
+    const publicread = "第一个写想法的人最可爱";
     const onlyread = "作者想静静，想法已关闭";
     const privates = " 私密瞬间，仅自己可见";
     const time = conversionTime(this.state.list.create_time, "Y/M/D H:m");
 
     return (
-      <div className="instantdetails-content">
+      <div className="instantdetails-content" onScroll={this.onScroll}>
         <div className="instantdetails-main">
           <div className="instantdetails-header">
             <div className="instantdetails-datails">
               <div className="instantdetails-img1"></div>
               <div className="instantdetails-datails-word">详情</div>
             </div>
-            <div className="instantdetails-img2"></div>
+            <div className="instantdetails-img2" onClick={()=>{this.setState({isdispaly:!this.state.isdispaly})}}></div>
           </div>
 
           <div className="instantdetails-username">
@@ -203,7 +274,7 @@ export default class Instantdetails extends React.Component {
             this.renderOnlyReadAndPrivate(privates)}
           {this.state.list.privacy_type === "1" &&
             (this.state.thoughtlist.length === 0
-              ? this.renderPublicReadNothought()
+              ? this.renderPublicReadNothought(publicread)
               : this.renderPublicReadThought())}
 
           {this.state.iswiritethought && (
@@ -220,6 +291,7 @@ export default class Instantdetails extends React.Component {
               </div>
             </div>
           )}
+          {this.state.isdispaly && this.renderDisplay()}
         </div>
       </div>
     );

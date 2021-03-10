@@ -2,9 +2,11 @@ import React from "react";
 import "./Instantsquare.css";
 import ajax from "../utils/ajax";
 import conversionTime from "../utils/conversionTime";
+import history from "../utils/history"
 export default class Instantsquare extends React.Component {
   state = {
     squarelist: null,
+    isdisplay:false
   };
 
   componentDidMount() {
@@ -26,6 +28,9 @@ export default class Instantsquare extends React.Component {
       }
     );
   };
+  entersquareInstantdetails = (id) => {
+    history.push(`/mypage/instantdetails?id=${id}`);
+  };
   render() {
     if (!this.state.squarelist) return null;
 
@@ -40,7 +45,9 @@ export default class Instantsquare extends React.Component {
           <div>
             <ul>
               {this.state.squarelist.map((item) => (
-                <li key={item.id}>
+                
+                <li key={item.id} onClick={()=>this.entersquareInstantdetails(item.id)}> 
+                {console.log("item.user_id",item.user_id)}
                   <div className="instantsquare-li">
                     <div className="instantsquare-li-header">
                       <div className="instantsquare-li-userpic" >
@@ -76,6 +83,7 @@ export default class Instantsquare extends React.Component {
               ))}
             </ul>
           </div>
+          
         </div>
       </div>
     );

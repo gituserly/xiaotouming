@@ -1,0 +1,52 @@
+@import './var.scss';
+@import './mixin.scss';
+// @mixin border-radius {
+//     -webkit-border-radius: 5px;
+//     border-radius: 5px;
+// }
+.btn {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.mypage-text {
+    color: $color;
+    @include border-radius(50%);
+    // -webkit-border-radius: 5px;
+    // border-radius: 5px;
+    .instant {
+        @extend .btn;
+        &.active {}
+    }
+    @at-root .a {
+        .b {
+            .c {}
+        }
+    }
+}
+
+
+.mypage-text .instant {}
+
+.a {}
+
+.instant {
+    &-header {}
+}
+
+.instant-header {
+    .instant-aa {}
+    .cccc {}
+}
+
+
+.instant-choosestatus {
+&-list {
+    &-yellow {
+        $color: red;
+        color: rgba(red, o.6)
+    }
+}
+&-left {}
+}
