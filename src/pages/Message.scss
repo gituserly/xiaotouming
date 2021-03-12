@@ -1,0 +1,77 @@
+@import "./MyAllstyle.scss";
+.message-main {
+    background: $myBkg;
+    min-height: 100vh;
+    padding: 30px 24px;
+}
+
+.message-header {
+    display: $myDisplay;
+    margin-bottom: 47px;
+    &-img1 {
+        background: url("../pictures/back.png") no-repeat;
+        background-size: 16px 16px;
+        width: 16px;
+        height: 16px;
+        margin: 4.5px 10px 4.5px 0px;
+    }
+    &-title {
+        height: 25px;
+        font-size: 16px;
+        font-family: $myFont-family;
+        font-weight: 500;
+        color: $myColor;
+        line-height: 25px;
+        letter-spacing: 0.5px;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.message-middle {
+    display: flex;
+    &-avatar {
+        font-family: $myFont-family;
+        font-size: 16px;
+        color: $myColor;
+    }
+    &-comment {
+        padding: 0px 23px 0px 8px;
+        flex: 1;
+        &-reply {
+            font-size: 13px;
+            font-family: $myFont-family;
+            font-weight: 300;
+            color: $myColor;
+            line-height: 20px;
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        &-dayago {
+            height: 16.5px;
+            font-size: 12px;
+            font-family: $myFont-family;
+            font-weight: 300;
+            color: #747A80;
+            line-height: 16.5px;
+            letter-spacing: 0.5px;
+        }
+    }
+    &-text {
+        width: 49px;
+        height: 49px;
+        font-size: 12px;
+        font-family: PingFangSC-Light, PingFang SC;
+        font-weight: 300;
+        color: #8F959B;
+        line-height: 16px;
+        letter-spacing: 0.5px;
+    }
+}

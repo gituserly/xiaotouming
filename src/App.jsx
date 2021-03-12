@@ -10,6 +10,7 @@ const Mypage = lazy(() => import("./pages/Mypage"));
 const Releaseinstant = lazy(() => import("./pages/Releaseinstant"));
 const Instantdetails = lazy(() => import("./pages/Instantdetails"));
 const Instantsquare = lazy(() => import("./pages/Instantsquare"));
+const Message = lazy(() => import("./pages/Message"));
 function App() {
   return (
     <Router history={history}>
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/entervalidation" component={Entervalidation} />
             <Route exact path="/page" component={Page} />
             <Route exact path="/mypage" component={Mypage} />
+            <Route exact path="/mypage/message" component={Message}/>
             
             <Route
               exact

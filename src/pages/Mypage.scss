@@ -160,3 +160,24 @@ p {
     display: flex;
     justify-content: space-between;
 }
+
+.mypage-message {
+    height: 24px;
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 0px 135px;
+    &-text {
+        height: 20px;
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 20px;
+        background: #BC9A7A;
+        border-radius: 16px;
+        text-align: center;
+    }
+}

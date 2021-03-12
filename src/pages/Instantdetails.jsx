@@ -193,7 +193,7 @@ export default class Instantdetails extends React.Component {
   <div className ="instantsquare-display-middle">
     <div className ="instantsquare-display-header-fcous">
     <div className ="instantsquare-display-header-imgfcous"></div>
-      <div className ="instantsquare-display-header-word">关注</div>
+      <div className ="instantsquare-display-header-word" onClick={this.fcousUser}>关注</div>
     </div>
     <div className ="instantsquare-display-header-unlike">
     <div className ="instantsquare-display-header-imgunlike"></div>
@@ -228,6 +228,19 @@ export default class Instantdetails extends React.Component {
       this.getCommentList(this.state.commentPage + 1);
     }
   };
+  fcousUser=()=>{
+    
+    ajax(`forum/collection/${localStorage.getItem("userId")}_${this.state.list.id}`,"POST")
+    .then(
+      (res) => {
+        console.log("fcous user success ", res);
+        
+      },
+      (rej) => {
+        console.log("fcous user fail ", rej);
+      }
+    );
+  }
   render() {
     if (!this.state.list) return null;
     if (!this.state.thoughtlist) return null;

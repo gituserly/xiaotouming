@@ -15,6 +15,7 @@ export default class Mypage extends React.Component {
       start: 0,
       end: 0,
     },
+    ismessage: false,
   };
   componentDidMount() {
     this.fetchData(1);
@@ -51,20 +52,20 @@ export default class Mypage extends React.Component {
     history.push("/mypage/releaseinstant");
   };
   onTouchStart = (e) => {
-    console.log("e",e)
-    console.log("this.scrollBox",this.scrollBox)
+    console.log("e", e);
+    console.log("this.scrollBox", this.scrollBox);
     if (this.scrollBox.scrollTop > 0) {
       //如果有滑动 this.scrollBox.scrollTop > 0
-      console.log('USEABLE', false);
+      console.log("USEABLE", false);
       this.setState({
         moveInfo: {
-          useable: false
+          useable: false,
         },
       });
-      return
-    };
-    
-    console.log('stART', this.scrollBox.scrollTop);
+      return;
+    }
+
+    console.log("stART", this.scrollBox.scrollTop);
     this.setState({
       moveInfo: {
         useable: true,
@@ -85,9 +86,10 @@ export default class Mypage extends React.Component {
   onTouchEnd = () => {
     const { start, end, useable } = this.state.moveInfo;
     if (!useable) return;
-    console.log('useable', useable);
+    console.log("useable", useable);
     if (start - end < -50) {
       console.log("下滑");
+      history.push("/mypage/instantsquare");
     }
   };
   render() {
@@ -162,6 +164,12 @@ export default class Mypage extends React.Component {
             })}
           </ul>
         </div>
+        {this.state.ismessage && (
+          <div className="mypage-message">
+            <div className="mypage-message-text"> 3条新消息</div>
+          </div>
+        )}
+       
       </div>
     );
   }
