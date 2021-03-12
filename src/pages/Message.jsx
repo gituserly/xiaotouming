@@ -16,7 +16,7 @@ export default class Message extends React.Component {
                 <div className="message-middle-avatar">tx</div>
                 <div className="message-middle-comment">
                   <div className="message-middle-comment-reply">
-                    白鹭上西天 评论了你:非常非常感谢大哥做我网管的引路人让我无法…
+                    白鹭上西天 评论了你:非常非常感谢大哥做我网管的引路人让我ss无法…
                   </div>
 
                   <div className="message-middle-comment-dayago">1天前</div>
