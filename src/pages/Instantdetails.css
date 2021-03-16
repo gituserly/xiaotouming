@@ -93,6 +93,10 @@
     letter-spacing: 0.5px;
 }
 
+.instantdetalis-like.likeing {
+    color: red;
+}
+
 .instantdetails-thoughtcontent {
     width: 100%;
     border-top: 1px solid #2B353D;

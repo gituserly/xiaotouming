@@ -3,6 +3,7 @@ import "./Mypage.scss";
 import ajax from "../utils/ajax";
 import history from "../utils/history";
 import conversionTime from "../utils/conversionTime";
+import today from "../utils/today";
 // console.log(localStorage.getItem("userId"));
 
 export default class Mypage extends React.Component {
@@ -16,11 +17,24 @@ export default class Mypage extends React.Component {
       end: 0,
     },
     ismessage: false,
+    today:null
   };
   componentDidMount() {
-    this.fetchData(1);
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.fetchData(1);
+    } else {
+      history.push("/login");
+    }
+    this.getToday()
   }
-
+  getToday=()=>{
+    this.setState({today:today()})
+    this.todaysss=setTimeout(() => {this.getToday()}, 1000);
+  }
+componentWillUnmount(){
+  clearTimeout (this.todaysss)
+}
   fetchData = (type, page = 1) => {
     console.log("fetchData", type);
     this.setState({ currentType: type });
@@ -107,7 +121,7 @@ export default class Mypage extends React.Component {
           </div>
           <div className="place-tab"></div>
         </div>
-        <div className="mypage-date">10月28日</div>
+        <div className="mypage-date">{this.state.today}</div>
         <div className="mypage-knowtime">我们相识的第一千零一天</div>
         <div>
           <button className="mypage-button">
@@ -169,7 +183,6 @@ export default class Mypage extends React.Component {
             <div className="mypage-message-text"> 3条新消息</div>
           </div>
         )}
-       
       </div>
     );
   }

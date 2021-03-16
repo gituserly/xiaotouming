@@ -2,6 +2,7 @@ import React from "react";
 import "./Instantdetails.css";
 import ajax from "../utils/ajax";
 import conversionTime from "../utils/conversionTime";
+import history from "../utils/history"
 
 export default class Instantdetails extends React.Component {
   thoughtid = 0;
@@ -13,7 +14,8 @@ export default class Instantdetails extends React.Component {
     thoughtcount: 0,
     commentLoading: false,
     commentPage: 0,
-    isdispaly:false
+    isdispaly: false,
+    islike: false,
     // comment: {
     //   list: [],
     //   total: 0,
@@ -73,7 +75,7 @@ export default class Instantdetails extends React.Component {
   writeThought = () => {
     const queryString = require("query-string");
     const parsed = queryString.parse(window.location.search);
-  
+
     const { thought } = this.state;
 
     ajax(`comment`, "POST", {
@@ -87,8 +89,8 @@ export default class Instantdetails extends React.Component {
         this.setState({ iswiritethought: false });
         ajax(
           `comment?forum_id=${
-            parsed.userid
-          }&comment_id=441&list_type=1&page=3&user_id=${localStorage.getItem(
+            parsed.id
+          }&comment_id=441&list_type=1&page=1&user_id=${localStorage.getItem(
             "userId"
           )}`,
           "GET"
@@ -179,43 +181,48 @@ export default class Instantdetails extends React.Component {
       </div>
     );
   };
-  renderDisplay=()=><div className="instantsquare-display">
-  <div className ="instantsquare-display-header">
-    <div className ="instantsquare-display-header-wechat">
-      <div className ="instantsquare-display-header-imgwechat" ></div>
-      <div className ="instantsquare-display-header-word">微信好友</div>
+  renderDisplay = () => (
+    <div className="instantsquare-display">
+      <div className="instantsquare-display-header">
+        <div className="instantsquare-display-header-wechat">
+          <div className="instantsquare-display-header-imgwechat"></div>
+          <div className="instantsquare-display-header-word">微信好友</div>
+        </div>
+        <div className="instantsquare-display-header-friends">
+          <div className="instantsquare-display-header-imgfriends"></div>
+          <div className="instantsquare-display-header-word">朋友圈</div>
+        </div>
+      </div>
+      <div className="instantsquare-display-middle">
+        <div
+          className="instantsquare-display-header-fcous"
+          onClick={this.fcousUser}
+        >
+          <div className="instantsquare-display-header-imgfcous"></div>
+          <div className="instantsquare-display-header-word">关注</div>
+        </div>
+        <div className="instantsquare-display-header-unlike">
+          <div className="instantsquare-display-header-imgunlike"></div>
+          <div className="instantsquare-display-header-word">不喜欢</div>
+        </div>
+        <div className="instantsquare-display-header-jubao">
+          <div className="instantsquare-display-header-imgjubao"></div>
+          <div className="instantsquare-display-header-word">举报</div>
+        </div>
+      </div>
+      <div className="instantsquare-display-footer">取消</div>
     </div>
-    <div className ="instantsquare-display-header-friends">
-    <div className ="instantsquare-display-header-imgfriends"></div>
-      <div className ="instantsquare-display-header-word">朋友圈</div>
-    </div>
-  </div>
-  <div className ="instantsquare-display-middle">
-    <div className ="instantsquare-display-header-fcous">
-    <div className ="instantsquare-display-header-imgfcous"></div>
-      <div className ="instantsquare-display-header-word" onClick={this.fcousUser}>关注</div>
-    </div>
-    <div className ="instantsquare-display-header-unlike">
-    <div className ="instantsquare-display-header-imgunlike"></div>
-      <div className ="instantsquare-display-header-word">不喜欢</div>
-    </div>
-    <div className="instantsquare-display-header-jubao">
-    <div className ="instantsquare-display-header-imgjubao"></div>
-      <div className ="instantsquare-display-header-word">举报</div>
-    </div>
-  </div>
-  <div className ="instantsquare-display-footer">取消</div>
-</div>
+  );
   onScroll = (e) => {
     // console.log("e.target",e.target)
     // 在Chrome中可以用$0表示选中的div，默认为body
     const offsetHeight = e.target.offsetHeight;
     //offsetHeight 页面高度
     const scrollHeight = e.target.scrollHeight;
-    console.log("scrollHeight ",scrollHeight)
+    console.log("scrollHeight ", scrollHeight);
     //scrollHeight 滑动高度
     const scrollTop = e.target.scrollTop;
-    console.log("scrollTop ",scrollTop )
+    console.log("scrollTop ", scrollTop);
     // scrollTop  滑动位置距离顶部的距离
     const distance = scrollHeight - offsetHeight;
     const maxPage = Math.ceil(this.state.thoughtcount / 10);
@@ -228,18 +235,43 @@ export default class Instantdetails extends React.Component {
       this.getCommentList(this.state.commentPage + 1);
     }
   };
-  fcousUser=()=>{
-    
-    ajax(`forum/collection/${localStorage.getItem("userId")}_${this.state.list.id}`,"POST")
-    .then(
+  fcousUser = () => {
+    ajax(
+      `forum/collection/${localStorage.getItem("userId")}_${
+        this.state.list.id
+      }`,
+      "POST"
+    ).then(
       (res) => {
         console.log("fcous user success ", res);
-        
       },
       (rej) => {
         console.log("fcous user fail ", rej);
       }
     );
+  };
+  identification = async () => {
+    try {
+      const res = await ajax(
+        `forum/agree/${localStorage.getItem("userId")}_${
+          this.state.list.id
+        }_519141`,
+        "POST"
+      );
+      console.log("identification success", res);
+      this.setState({
+        islike: true,
+        list: {
+          ...this.state.list,
+          agree_count: this.state.list.agree_count + 1,
+        },
+      });
+    } catch (error) {
+      console.log("identification fail", error);
+    }
+  };
+  backMypage=()=>{
+    history.push("/")
   }
   render() {
     if (!this.state.list) return null;
@@ -255,16 +287,23 @@ export default class Instantdetails extends React.Component {
     const onlyread = "作者想静静，想法已关闭";
     const privates = " 私密瞬间，仅自己可见";
     const time = conversionTime(this.state.list.create_time, "Y/M/D H:m");
+    // const like_count=this.state.list.agree_count
+    // console.log("like-cunt",like_count)
 
     return (
       <div className="instantdetails-content" onScroll={this.onScroll}>
         <div className="instantdetails-main">
           <div className="instantdetails-header">
             <div className="instantdetails-datails">
-              <div className="instantdetails-img1"></div>
+              <div className="instantdetails-img1" onClick={this.backMypage}></div>
               <div className="instantdetails-datails-word">详情</div>
             </div>
-            <div className="instantdetails-img2" onClick={()=>{this.setState({isdispaly:!this.state.isdispaly})}}></div>
+            <div
+              className="instantdetails-img2"
+              onClick={() => {
+                this.setState({ isdispaly: !this.state.isdispaly });
+              }}
+            ></div>
           </div>
 
           <div className="instantdetails-username">
@@ -275,7 +314,12 @@ export default class Instantdetails extends React.Component {
           </div>
           <div className="instantdetails-footer">
             <div className="instantdetails-time">{time}</div>
-            <div className="instantdetails-like">
+            <div
+              className={`instantdetails-like${
+                this.state.islike === true ? "likeing" : ""
+              }`}
+              onClick={this.identification}
+            >
               ❤{this.state.list.agree_count}
             </div>
           </div>

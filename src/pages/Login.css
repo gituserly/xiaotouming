@@ -63,7 +63,8 @@ body {
     letter-spacing: 0.5px;
     background: #303B45;
     border: 0px;
-    outline: none;
+    outline: 0;
+    appearance: none;
     margin-left: 50px;
 }
 

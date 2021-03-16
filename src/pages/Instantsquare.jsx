@@ -10,7 +10,7 @@ export default class Instantsquare extends React.Component {
   };
 
   componentDidMount() {
-    this.getInstantSquareList(10);
+    this.getInstantSquareList(1);
   }
   getInstantSquareList = (page) => {
     ajax(
@@ -31,6 +31,9 @@ export default class Instantsquare extends React.Component {
   entersquareInstantdetails = (id) => {
     history.push(`/mypage/instantdetails?id=${id}`);
   };
+  backMypage=()=>{
+    history.push("/")
+  }
   render() {
     if (!this.state.squarelist) return null;
 
@@ -38,7 +41,7 @@ export default class Instantsquare extends React.Component {
       <div className="instantsquare-content">
         <div className="instantsquare-main">
           <div className="instantsquare-header">
-            <div className="instantsquare-img1"></div>
+            <div className="instantsquare-img1" onClick={this.backMypage}></div>
             <div className="instantsquare-img2"></div>
           </div>
           <div className="instantsquare-keyword">瞬间</div>
@@ -46,7 +49,7 @@ export default class Instantsquare extends React.Component {
             <ul>
               {this.state.squarelist.map((item) => (
                 
-                <li key={item.id} onClick={()=>this.entersquareInstantdetails(item.id)}> 
+                <li key={item.id} onClick={()=>this.entersquareInstantdetails(item.id)} className="ins-li"> 
                 {console.log("item.user_id",item.user_id)}
                   <div className="instantsquare-li">
                     <div className="instantsquare-li-header">

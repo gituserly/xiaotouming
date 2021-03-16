@@ -20,7 +20,6 @@
     background-size: 16px 16px;
     width: 16px;
     height: 16px;
-    border: dashed 1px white;
 }
 
 .instantsquare-img2 {
@@ -28,7 +27,6 @@
     background-size: 20px 20px;
     width: 20px;
     height: 20px;
-    border: dashed 1px white;
 }
 
 .instantsquare-keyword {
@@ -47,9 +45,10 @@ p {
     padding: 0;
 }
 
-li {
+.ins-li {
     list-style: none;
     border-bottom: 1px solid #2B353D;
+    padding: 25px 0px;
 }
 
 .instantsquare-li {
@@ -103,7 +102,6 @@ li {
 .instantsquare-li-footer {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
 }
 
 .instantsquare-li-lik-mes {

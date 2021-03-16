@@ -41,7 +41,7 @@ export default class Entervalidation extends React.Component {
               localStorage.setItem("token", rs.token);
               localStorage.setItem("userId", rs.open_id);
 
-              history.push(`/page?phone=${parsed.phone}`);
+              history.push(rs.first_type ? `/page?phone=${parsed.phone}` : "/");
             },
             (rej) => {
               console.log(" validation reject", rej);
@@ -52,12 +52,29 @@ export default class Entervalidation extends React.Component {
       }
     );
   };
-
+ againGet = () => {
+  const parsed = queryString.parse(window.location.search);
+    ajax(
+      `authentication/code?phone=${parsed.phone}&sign=53ee50718b01b71c03fa47d352e0b667`,
+      "get"
+    ).then(
+      (rs) => {
+        console.log(" lagainGet success", rs);
+   
+      },
+      (rej) => {
+        console.log("againGet reject", rej);
+      }
+    );
+  };
+  backLogin=()=>{
+    history.push("/login")
+  }
   render() {
     return (
       <div className="content-va">
         <div className="header-va">
-          <div className="img-va"></div>
+          <div className="img-va" onClick={this.backLogin}></div>
           <div className="middle-va">输入验证码</div>
           <div className="input-va">
             <input
@@ -73,7 +90,7 @@ export default class Entervalidation extends React.Component {
               ))}
             </div>
           </div>
-          <div className="footer-va">重新获取</div>
+          <div className="footer-va" onClick={this.againGet}>重新获取</div>
         </div>
         {this.state.isfail === false ? null : (
           <div className="fail-va">

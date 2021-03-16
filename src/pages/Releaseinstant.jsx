@@ -49,15 +49,7 @@ export default class Releaseinstant extends React.Component {
       forum_content: this.state.shuru,
       privacy_type: this.state.privacytype,
 
-      //   forum_content_json: JSON.stringify([
-      //     { content_type: "text", content_detail: "666" },
-      //     {
-      //       content_type: "img",
-      //       content_detail:
-      //         "http://meiui.oss-cn-shanghai.aliyuncs.com/xtm/portrait_icon_boy%403x.png",
-      //     },
-      //     { content_type: "text", content_detail: "666" },
-      //   ]),
+     
     }).then(
       (rs) => {
         console.log("release message success", rs);
@@ -68,7 +60,9 @@ export default class Releaseinstant extends React.Component {
       }
     );
   };
-
+backMypage=()=>{
+  history.push("/")
+}
   render() {
     console.log("type", this.state.privacytype);
 
@@ -76,7 +70,7 @@ export default class Releaseinstant extends React.Component {
       <div className="instant-content">
         <div className="instant-main">
           <div className="instant-header">
-            <div className="instant-img"></div>
+            <div className="instant-img" onClick={this.backMypage}></div>
             <div className="instant-release" onClick={this.releaseMessage}>
               发布
             </div>

@@ -29,6 +29,7 @@ function App() {
             <Route exact path="/entervalidation" component={Entervalidation} />
             <Route exact path="/page" component={Page} />
             <Route exact path="/mypage" component={Mypage} />
+            <Route exact path="/" component={Mypage} />
             <Route exact path="/mypage/message" component={Message}/>
             
             <Route
