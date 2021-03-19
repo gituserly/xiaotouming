@@ -1,8 +1,8 @@
 import React from "react";
-import "./Instantdetails.css";
+import "./Instantdetails.scss";
 import ajax from "../utils/ajax";
 import conversionTime from "../utils/conversionTime";
-import history from "../utils/history"
+import history from "../utils/history";
 
 export default class Instantdetails extends React.Component {
   thoughtid = 0;
@@ -16,6 +16,11 @@ export default class Instantdetails extends React.Component {
     commentPage: 0,
     isdispaly: false,
     islike: false,
+    replycom: "",
+    isreply: false,
+    isfcous: false,
+    isdianzan: false,
+
     // comment: {
     //   list: [],
     //   total: 0,
@@ -26,6 +31,7 @@ export default class Instantdetails extends React.Component {
   componentDidMount() {
     this.getInstansdetails();
     this.getCommentList();
+    
   }
 
   getCommentList = async (page = 1) => {
@@ -112,6 +118,9 @@ export default class Instantdetails extends React.Component {
       }
     );
   };
+  replyComment = (isreply) => {
+    this.setState({ isreply });
+  };
   renderPublicReadNothought = (text) => {
     return (
       <div className="instantdetails-thoughtcontent">
@@ -166,11 +175,19 @@ export default class Instantdetails extends React.Component {
                   <div className="instantdetails-username">
                     {item.comment.forum_nike_name}
                   </div>
-                  <div className="instantdetails-username">
-                    msg {item.comment.reply_count}
+                  <div className="instantdetails-u">
+                    <div className="ins-msg"></div>
+                    <div className="instantdetails-like-count">
+                      {item.comment.reply_count}
+                    </div>
                   </div>
                 </div>
-                <p className="thought-p">{item.comment.comment_content}</p>
+                <p
+                  className="thought-p"
+                  onClick={() => this.replyComment(true)}
+                >
+                  {item.comment.comment_content}
+                </p>
               </li>
             ))}
           </ul>
@@ -182,37 +199,86 @@ export default class Instantdetails extends React.Component {
     );
   };
   renderDisplay = () => (
-    <div className="instantsquare-display">
-      <div className="instantsquare-display-header">
-        <div className="instantsquare-display-header-wechat">
-          <div className="instantsquare-display-header-imgwechat"></div>
-          <div className="instantsquare-display-header-word">微信好友</div>
+    <div
+      className="instantsquare-display-show"
+      onClick={() => {
+        this.setState({ isdispaly: false });
+      }}
+    >
+      <div
+        className="instantsquare-display"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="instantsquare-display-middle">
+          <div
+            className="instantsquare-display-header-fcous"
+            onClick={this.fcousUser}
+          >
+            <div
+              className={`instantsquare-display-header-imgfcous ${
+                this.state.isfcous === true ? "fcousing" : ""
+              }`}
+            ></div>
+            <div className="instantsquare-display-header-word">关注</div>
+          </div>
+          <div
+            className="instantsquare-display-header-unlike"
+            onClick={() => {
+              this.setState({ isdianzan: true });
+            }}
+          >
+            <div
+              className={`instantsquare-display-header-imgunlike ${
+                this.state.isdianzan === true ? "unlikeing" : ""
+              }`}
+            ></div>
+            <div className="instantsquare-display-header-word">不喜欢</div>
+          </div>
+          <div className="instantsquare-display-header-jubao">
+            <div className="instantsquare-display-header-imgjubao"></div>
+            <div className="instantsquare-display-header-word">举报</div>
+          </div>
         </div>
-        <div className="instantsquare-display-header-friends">
-          <div className="instantsquare-display-header-imgfriends"></div>
-          <div className="instantsquare-display-header-word">朋友圈</div>
-        </div>
-      </div>
-      <div className="instantsquare-display-middle">
         <div
-          className="instantsquare-display-header-fcous"
-          onClick={this.fcousUser}
+          className="instantsquare-display-footer"
+          onClick={() => this.setState({ isdispaly: false })}
         >
-          <div className="instantsquare-display-header-imgfcous"></div>
-          <div className="instantsquare-display-header-word">关注</div>
-        </div>
-        <div className="instantsquare-display-header-unlike">
-          <div className="instantsquare-display-header-imgunlike"></div>
-          <div className="instantsquare-display-header-word">不喜欢</div>
-        </div>
-        <div className="instantsquare-display-header-jubao">
-          <div className="instantsquare-display-header-imgjubao"></div>
-          <div className="instantsquare-display-header-word">举报</div>
+          取消
         </div>
       </div>
-      <div className="instantsquare-display-footer">取消</div>
     </div>
   );
+  renderReply = () => {
+    console.log("th.com",this.state.thoughtlist.comment)
+    return (
+      <div
+        className="instantdetalis-layer"
+        onClick={() => this.replyComment(false)}
+      >
+        <div
+          className="instantdetalis-reply-comment"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="instantdetalis-reply-comment-text">回复zhangsn:</div>
+          <textarea
+            className="instantdetalis-reply-comment-textarea"
+            onChange={(e) => {
+              this.setState({ replycom: e.target.value });
+            }}
+          >
+            {this.state.replycom}
+          </textarea>
+          <div
+            className={`instantdetalis-reply-comment-release ${
+              this.state.replycom.length > 0 ? "active" : ""
+            }`}
+          >
+            发送
+          </div>
+        </div>
+      </div>
+    );
+  };
   onScroll = (e) => {
     // console.log("e.target",e.target)
     // 在Chrome中可以用$0表示选中的div，默认为body
@@ -244,35 +310,59 @@ export default class Instantdetails extends React.Component {
     ).then(
       (res) => {
         console.log("fcous user success ", res);
+        this.setState({ isfcous: true });
       },
       (rej) => {
         console.log("fcous user fail ", rej);
       }
     );
   };
-  identification = async () => {
+  agreeIdea = async () => {
     try {
-      const res = await ajax(
-        `forum/agree/${localStorage.getItem("userId")}_${
-          this.state.list.id
-        }_519141`,
-        "POST"
-      );
-      console.log("identification success", res);
-      this.setState({
-        islike: true,
-        list: {
-          ...this.state.list,
-          agree_count: this.state.list.agree_count + 1,
-        },
-      });
+      if (this.state.list.agree_flag === 2) {
+        await ajax(
+          `forum/agree/${localStorage.getItem("userId")}_${this.state.list.id}`,
+          "POST",
+          { agree_type: 2 }
+        );
+        console.log("agreeIdea success");
+        this.getInstansdetails();
+        this.setState({
+          islike: true,
+
+          // list: {
+          //   ...this.state.list,
+          //   agree_count: +this.state.list.agree_count + 1,
+          // },
+        });
+      }
+      if (this.state.list.agree_flag === 1) {
+        const res = await ajax(
+          `forum/agree/${localStorage.getItem("userId")}_${
+            this.state.list.id
+          }?agree_type=2`,
+          "DELETE"
+        );
+        console.log(" detele agreeIdea success", res);
+        this.getInstansdetails();
+        this.setState({
+          islike: false,
+          // list:{
+          //   ...this.state.list,
+          //   agree_count:+this.state.list.agree_count - 1,
+          // }
+        });
+      }
     } catch (error) {
-      console.log("identification fail", error);
+      console.log("agreeIdea fail", error);
     }
   };
-  backMypage=()=>{
-    history.push("/")
-  }
+  backMypage = () => {
+    history.push("/");
+  };
+  cancelShow = () => {
+    this.setState({ isreply: false });
+  };
   render() {
     if (!this.state.list) return null;
     if (!this.state.thoughtlist) return null;
@@ -295,7 +385,10 @@ export default class Instantdetails extends React.Component {
         <div className="instantdetails-main">
           <div className="instantdetails-header">
             <div className="instantdetails-datails">
-              <div className="instantdetails-img1" onClick={this.backMypage}></div>
+              <div
+                className="instantdetails-img1"
+                onClick={this.backMypage}
+              ></div>
               <div className="instantdetails-datails-word">详情</div>
             </div>
             <div
@@ -314,13 +407,16 @@ export default class Instantdetails extends React.Component {
           </div>
           <div className="instantdetails-footer">
             <div className="instantdetails-time">{time}</div>
-            <div
-              className={`instantdetails-like${
-                this.state.islike === true ? "likeing" : ""
-              }`}
-              onClick={this.identification}
-            >
-              ❤{this.state.list.agree_count}
+            <div className={`instantdetails-like`}>
+              <div
+                className={`ins-img ${
+                  this.state.islike === true ? "likeing" : ""
+                }`}
+                onClick={this.agreeIdea}
+              ></div>
+              <div className="instantdetails-like-count">
+                {this.state.list.agree_count}
+              </div>
             </div>
           </div>
 
@@ -335,20 +431,31 @@ export default class Instantdetails extends React.Component {
               : this.renderPublicReadThought())}
 
           {this.state.iswiritethought && (
-            <div className="instantdetails-thought-release">
-              <textarea
-                className="instantdetails-textarea"
-                value={this.state.thought}
-                onChange={(e) => {
-                  this.setState({ thought: e.target.value });
-                }}
-              ></textarea>
-              <div className="thought-release" onClick={this.writeThought}>
-                发布
+            <div
+              className="instantdetails-thought-show"
+              onClick={() => {
+                this.setState({ iswiritethought: false });
+              }}
+            >
+              <div
+                className="instantdetails-thought-release"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <textarea
+                  className="instantdetails-textarea"
+                  value={this.state.thought}
+                  onChange={(e) => {
+                    this.setState({ thought: e.target.value });
+                  }}
+                ></textarea>
+                <div className="thought-release" onClick={this.writeThought}>
+                  发布
+                </div>
               </div>
             </div>
           )}
           {this.state.isdispaly && this.renderDisplay()}
+          {this.state.isreply && this.renderReply()}
         </div>
       </div>
     );

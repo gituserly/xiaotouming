@@ -17,7 +17,8 @@ export default class Mypage extends React.Component {
       end: 0,
     },
     ismessage: false,
-    today:null
+    today:null,
+    knowtime:[]
   };
   componentDidMount() {
     const token = localStorage.getItem("token");
@@ -27,6 +28,7 @@ export default class Mypage extends React.Component {
       history.push("/login");
     }
     this.getToday()
+    this.knowEachOther()
   }
   getToday=()=>{
     this.setState({today:today()})
@@ -58,7 +60,23 @@ componentWillUnmount(){
       }
     );
   };
-
+knowEachOther=()=>{
+  ajax(
+    `service/${localStorage.getItem(
+      "userId"
+    )}`,
+    "GET"
+  ).then(
+    (rs) => {
+      console.log("get  know time success", rs);
+      this.setState({knowtime:rs})
+      
+    },
+    (rej) => {
+      console.log("get  know time fail", rej);
+    }
+  );
+}
   enterInstansdetails = (id) => {
     history.push(`/mypage/instantdetails?id=${id}`);
   };
@@ -111,7 +129,7 @@ componentWillUnmount(){
       this.state.currentType === 1
         ? this.state.instantlist
         : this.state.fcouslist;
-    // console.log("this.state.instantlist", this.state.instantlist);
+    
     return (
       <div className="mypage-main">
         <div className="mypage-place">
@@ -122,7 +140,9 @@ componentWillUnmount(){
           <div className="place-tab"></div>
         </div>
         <div className="mypage-date">{this.state.today}</div>
-        <div className="mypage-knowtime">我们相识的第一千零一天</div>
+        <div className="mypage-knowtime">
+          {this.state.knowtime.home_text}
+          </div>
         <div>
           <button className="mypage-button">
             <span className="mypage-button-text" onClick={this.releaseInstant}>

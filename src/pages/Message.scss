@@ -38,9 +38,9 @@ li {
 .message-middle {
     display: flex;
     &-avatar {
-        font-family: $myFont-family;
-        font-size: 16px;
-        color: $myColor;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
     }
     &-comment {
         padding: 0px 23px 0px 8px;

@@ -13,9 +13,6 @@ export default class Login extends React.Component {
       this.setState(
         {
           telphone: val,
-        },
-        () => {
-          console.log("telphone", this.state.telphone);
         }
       );
     } else {

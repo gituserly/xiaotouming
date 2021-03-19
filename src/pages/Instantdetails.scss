@@ -56,6 +56,28 @@
     margin-bottom: 12px;
 }
 
+.instantdetails-u {
+    display: flex;
+    align-items: center;
+    .ins-msg {
+        background: url(../pictures/msg.png) no-repeat;
+        width: 12px;
+        height: 12px;
+        background-size: 100%;
+    }
+}
+
+.instantdetails-like-count {
+    padding-left: 8px;
+    font-size: 12px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #747A80;
+    line-height: 12px;
+    display: flex;
+    align-items: center
+}
+
 .instantdetails-text {
     width: 100%;
     height: 308px;
@@ -91,10 +113,12 @@
     color: #747A80;
     line-height: 16.5px;
     letter-spacing: 0.5px;
+    display: flex;
+    text-align: center;
 }
 
-.instantdetalis-like.likeing {
-    color: red;
+.ins-img.likeing {
+    background-image: url('../pictures/love-highlight.png');
 }
 
 .instantdetails-thoughtcontent {
@@ -162,19 +186,20 @@
 }
 
 .instantdetails-thought-release {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: 100%;
     box-sizing: border-box;
     padding: 0px 24px;
     background-color: #303B45;
+    padding: 12px 12px;
+}
+
+.thought-release {
+    text-align: right;
 }
 
 .instantdetails-textarea {
     width: 100%;
-    height: 500px;
+    height: 200px;
     background-color: #303B45;
     border: none;
     outline: none;
@@ -225,10 +250,7 @@ li {
 }
 
 .instantsquare-display {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
     box-sizing: border-box;
     padding: 0px 27px;
     background: #2E353B;
@@ -249,10 +271,9 @@ li {
     border-bottom: 1px #262C32 solid;
     padding-bottom: 10px;
     margin-bottom: 25.5px;
+    padding: 20px 27px;
 }
 
-.instantsquare-display-header-wechat,
-.instantsquare-display-header-friends,
 .instantsquare-display-header-fcous,
 .instantsquare-display-header-unlike,
 .instantsquare-display-header-jubao {
@@ -261,18 +282,12 @@ li {
     text-align: center;
 }
 
-.instantsquare-display-header-imgwechat {
-    background: url("../pictures/icon_wechat.png") no-repeat;
-    background-size: 44px 44px;
-    width: 44px;
-    height: 44px;
+.instantsquare-display-header-imgfcous.fcousing {
+    background-image: url("../pictures/icon_attention_selected.png");
 }
 
-.instantsquare-display-header-imgfriends {
-    background: url("../pictures/pyq.png") no-repeat;
-    background-size: 45px 45px;
-    width: 45px;
-    height: 45px;
+.instantsquare-display-header-imgunlike.unlikeing {
+    background-image: url("../pictures/icon_dilike_selectd.png");
 }
 
 .instantsquare-display-header-imgfcous {
@@ -283,7 +298,7 @@ li {
 }
 
 .instantsquare-display-header-imgunlike {
-    background: url("../pictures/不喜欢.png") no-repeat;
+    background: url("../pictures/icon_dilike_normal.png") no-repeat;
     background-size: 45px 45px;
     width: 45px;
     height: 45px;
@@ -321,4 +336,62 @@ li {
     line-height: 21px;
     text-align: center;
     padding-bottom: 15px;
+}
+
+.ins-img {
+    background: url("../pictures/love.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+}
+
+.instantdetalis-layer,
+.instantdetails-thought-show,
+.instantsquare-display-show {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.instantdetalis-reply-comment {
+    width: 100%;
+    background-color: #37434D;
+    padding: 12px 24px;
+    &-text {
+        height: 22.5px;
+        font-size: 16px;
+        font-family: PingFangSC-Light, PingFang SC;
+        font-weight: 300;
+        color: #CED2D4;
+        line-height: 22.5px;
+        letter-spacing: 0.5px;
+    }
+    &-textarea {
+        height: 128px;
+        width: 100%;
+        background-color: #37434D;
+        border: none;
+        font-size: 16px;
+        font-family: PingFangSC-Light, PingFang SC;
+        font-weight: 300;
+        color: #CED2D4;
+        outline: none;
+    }
+    &-release {
+        height: 21px;
+        font-size: 15px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #747A80;
+        line-height: 21px;
+        text-align: right;
+    }
+}
+
+.instantdetalis-reply-comment-release.active {
+    color: #BC9A7A
 }
