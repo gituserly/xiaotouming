@@ -15,11 +15,14 @@ export default class Instantdetails extends React.Component {
     commentLoading: false,
     commentPage: 0,
     isdispaly: false,
-    islike: false,
+    // islike: false,
+    agreetype:0,
     replycom: "",
     isreply: false,
     isfcous: false,
     isdianzan: false,
+
+    currentAnswer: null
 
     // comment: {
     //   list: [],
@@ -72,6 +75,7 @@ export default class Instantdetails extends React.Component {
       (rs) => {
         console.log("enter instant details success", rs);
         this.setState({ list: rs }, () => console.log("rs", rs));
+        this.setState({agreetype:rs.agree_flag},() => console.log("rs.agree_type", rs.agree_flag))
       },
       (rej) => {
         console.log("enter instant details fail", rej);
@@ -118,8 +122,10 @@ export default class Instantdetails extends React.Component {
       }
     );
   };
-  replyComment = (isreply) => {
-    this.setState({ isreply });
+  replyComment = (id) => {
+    history.push(`/mypage/instantdetails/commentreply?id=${id}`)
+    
+    // this.setState({currentAnswer:item});
   };
   renderPublicReadNothought = (text) => {
     return (
@@ -184,17 +190,21 @@ export default class Instantdetails extends React.Component {
                 </div>
                 <p
                   className="thought-p"
-                  onClick={() => this.replyComment(true)}
+                  onClick={() => this.replyComment(item.comment.id)}
                 >
                   {item.comment.comment_content}
                 </p>
               </li>
             ))}
           </ul>
+
+      
+          {this.state.currentAnswer && this.renderReply(this.state.currentAnswer)}
         </div>
         <div className="instantdatails-thoughtcount">
           查看全部{this.state.thoughtcount}条想法
         </div>
+
       </div>
     );
   };
@@ -248,47 +258,89 @@ export default class Instantdetails extends React.Component {
       </div>
     </div>
   );
-  renderReply = () => {
-    console.log("th.com",this.state.thoughtlist.comment)
-    return (
-      <div
-        className="instantdetalis-layer"
-        onClick={() => this.replyComment(false)}
-      >
-        <div
-          className="instantdetalis-reply-comment"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="instantdetalis-reply-comment-text">回复zhangsn:</div>
-          <textarea
-            className="instantdetalis-reply-comment-textarea"
-            onChange={(e) => {
-              this.setState({ replycom: e.target.value });
-            }}
-          >
-            {this.state.replycom}
-          </textarea>
-          <div
-            className={`instantdetalis-reply-comment-release ${
-              this.state.replycom.length > 0 ? "active" : ""
-            }`}
-          >
-            发送
-          </div>
-        </div>
-      </div>
-    );
-  };
+  // replyIdea=(id)=>{
+  //   const queryString = require("query-string");
+  //   const parsed = queryString.parse(window.location.search);
+
+  //   const { replycom } = this.state;
+
+  //   ajax(`comment`, "POST", {
+  //     user_id: localStorage.getItem("userId"),
+  //     comment_content: replycom,
+  //     forum_id: parsed.id,
+  //     at_comment_id:id,
+  //     privacy_type: 1,
+  //   }).then(
+  //     (res) => {
+  //       console.log("reply thought success ", res);
+  //       this.setState({ iswiritethought: false });
+  //       ajax(
+  //         `comment?forum_id=${
+  //           parsed.id
+  //         }&comment_id=${id}&list_type=2&page=1&user_id=${localStorage.getItem(
+  //           "userId"
+  //         )}`,
+  //         "GET"
+  //       ).then(
+  //         (resolve) => {
+  //           console.log("get thoughtlist success ", res);
+  //           this.setState(
+  //             { thoughtlist: resolve.list, thoughtcount: resolve.total },
+  //             () => console.log("thoughtlist", this.state.thoughtlist)
+  //           );
+  //         },
+  //         (rej) => {
+  //           console.log("get thoughtlist fail ", rej);
+  //         }
+  //       );
+  //     },
+  //     (rej) => {
+  //       console.log("reply thought fail ", rej);
+  //     }
+  //   );
+  // }
+  // renderReply = (item) => {
+    
+  //   return (
+  //     <div
+  //       className="instantdetalis-layer"
+  //       onClick={() => this.replyComment(null)}
+  //     >
+  //       <div
+  //         className="instantdetalis-reply-comment"
+  //         onClick={(e) => e.stopPropagation()}
+  //       >
+  //         <div className="instantdetalis-reply-comment-text">回复{item.comment.forum_nike_name}:</div>
+  //         <textarea
+  //           className="instantdetalis-reply-comment-textarea"
+  //           value= {this.state.replycom}
+  //           onChange={(e) => {
+  //             this.setState({ replycom: e.target.value });
+  //           }}
+  //         >
+           
+  //         </textarea>
+  //         <div
+  //           className={`instantdetalis-reply-comment-release ${
+  //             this.state.replycom.length > 0 ? "active" : ""
+  //           }`}  onClick={()=>this.replyIdea(item.comment.id)}
+  //         >
+  //           发送
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // };
   onScroll = (e) => {
     // console.log("e.target",e.target)
     // 在Chrome中可以用$0表示选中的div，默认为body
     const offsetHeight = e.target.offsetHeight;
     //offsetHeight 页面高度
     const scrollHeight = e.target.scrollHeight;
-    console.log("scrollHeight ", scrollHeight);
+    // console.log("scrollHeight ", scrollHeight);
     //scrollHeight 滑动高度
     const scrollTop = e.target.scrollTop;
-    console.log("scrollTop ", scrollTop);
+    // console.log("scrollTop ", scrollTop);
     // scrollTop  滑动位置距离顶部的距离
     const distance = scrollHeight - offsetHeight;
     const maxPage = Math.ceil(this.state.thoughtcount / 10);
@@ -328,7 +380,7 @@ export default class Instantdetails extends React.Component {
         console.log("agreeIdea success");
         this.getInstansdetails();
         this.setState({
-          islike: true,
+          agreetype:1
 
           // list: {
           //   ...this.state.list,
@@ -346,7 +398,7 @@ export default class Instantdetails extends React.Component {
         console.log(" detele agreeIdea success", res);
         this.getInstansdetails();
         this.setState({
-          islike: false,
+          agreetype:2
           // list:{
           //   ...this.state.list,
           //   agree_count:+this.state.list.agree_count - 1,
@@ -410,7 +462,7 @@ export default class Instantdetails extends React.Component {
             <div className={`instantdetails-like`}>
               <div
                 className={`ins-img ${
-                  this.state.islike === true ? "likeing" : ""
+                  this.state.agreetype === 1? "likeing" : ""
                 }`}
                 onClick={this.agreeIdea}
               ></div>
@@ -455,7 +507,7 @@ export default class Instantdetails extends React.Component {
             </div>
           )}
           {this.state.isdispaly && this.renderDisplay()}
-          {this.state.isreply && this.renderReply()}
+         
         </div>
       </div>
     );

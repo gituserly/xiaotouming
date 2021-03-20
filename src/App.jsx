@@ -11,6 +11,7 @@ const Releaseinstant = lazy(() => import("./pages/Releaseinstant"));
 const Instantdetails = lazy(() => import("./pages/Instantdetails"));
 const Instantsquare = lazy(() => import("./pages/Instantsquare"));
 const Message = lazy(() => import("./pages/Message"));
+const Commentreply = lazy(() => import("./pages/Commentreply"));
 function App() {
   return (
     <Router history={history}>
@@ -43,6 +44,7 @@ function App() {
               component={Instantdetails}
             />
              <Route exact path="/mypage/instantsquare" component={Instantsquare} />
+             <Route exact path="/mypage/instantdetails/commentreply" component={Commentreply} />
           </Switch>
         </Suspense>
   
