@@ -1,12 +1,12 @@
-import React from 'react'
-import './Instantsquare.css'
-import Icon from '../components/icon'
-import ajax from '../utils/ajax'
-import conversionTime from '../utils/conversionTime'
-import history from '../utils/history'
-import Topic from '../components/topic'
-import MoreModal from '../components/more-modal'
-import Navbar from '../components/navbar'
+import React from "react";
+import "./Instantsquare.css";
+import Icon from "../components/icon";
+import ajax from "../utils/ajax";
+import conversionTime from "../utils/conversionTime";
+import history from "../utils/history";
+import Topic from "../components/topic";
+import MoreModal from "../components/more-modal";
+import Navbar from "../components/navbar";
 
 export default class Instantsquare extends React.Component {
   state = {
@@ -16,54 +16,63 @@ export default class Instantsquare extends React.Component {
 
     isDisplay: false,
     currentId: null,
-  }
+  };
 
   componentDidMount() {
-    this.getInstantSquareList(1)
+    this.getInstantSquareList(1);
   }
   getInstantSquareList = (page) => {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     ajax(
       `forum?list_type=3&page=${page}&user_id=${localStorage.getItem(
-        'userId'
+        "userId"
       )}`,
-      'GET'
+      "GET"
     ).then(
       (rs) => {
-        console.log('get instantsquare message success', rs)
+        console.log("get instantsquare message success", rs);
         this.setState({
           squarelist: [...this.state.squarelist, ...rs.list],
           loading: false,
           page,
-        })
+        });
       },
       (rej) => {
-        console.log('get instantsquare message fail', rej)
-        this.setState({ loading: false })
+        console.log("get instantsquare message fail", rej);
+        this.setState({ loading: false });
       }
-    )
-  }
+    );
+  };
   entersquareInstantdetails = (id) => {
-    history.push(`/mypage/instantdetails?id=${id}`)
-  }
+    history.push(`/mypage/instantdetails?id=${id}`);
+  };
   backMypage = () => {
-    history.push('/')
-  }
+    history.push("/");
+  };
 
   onScroll = (e) => {
-    const dom = e.target
-    const distance = dom.scrollHeight - dom.offsetHeight
-    console.log('distance', distance, dom.scrollTop)
+    const dom = e.target;
+    const distance = dom.scrollHeight - dom.offsetHeight;
+    console.log("distance", distance, dom.scrollTop);
     if (distance - dom.scrollTop < 10) {
-      console.log('bottom')
-      this.getInstantSquareList(this.state.page + 1)
+      console.log("bottom");
+      this.getInstantSquareList(this.state.page + 1);
     }
-  }
+  };
   render() {
-    if (!this.state.squarelist) return null
+    if (!this.state.squarelist) return null;
 
     return (
-      <Navbar renderRight={() => <div className="instantsquare-img2" onClick={()=>{history.push('/mypage/message')}}></div>}>
+      <Navbar
+        renderRight={() => (
+          <div
+            className="instantsquare-img2"
+            onClick={() => {
+              history.push("/mypage/message");
+            }}
+          ></div>
+        )}
+      >
         <div className="instantsquare-content" onScroll={this.onScroll}>
           <div className="instantsquare-main">
             <div className="instantsquare-keyword">瞬间</div>
@@ -91,6 +100,6 @@ export default class Instantsquare extends React.Component {
           )}
         </div>
       </Navbar>
-    )
+    );
   }
 }
