@@ -1,5 +1,5 @@
 .mypage-main {
-    background: #303B45;
+    background: #303b45;
     padding: 31.5px 24px 25.5px 24px;
     display: flex;
     flex-direction: column;
@@ -35,12 +35,12 @@ ul设为1，占减去其他内容的100% */
     font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
-    color: #CED2D4;
-    line-height: 20px
+    color: #ced2d4;
+    line-height: 20px;
 }
 
 .place-position {
-    background: url("../pictures/position.png") no-repeat;
+    background: url('../pictures/position.png') no-repeat;
     width: 16px;
     height: 16px;
     display: inline-block;
@@ -49,20 +49,31 @@ ul设为1，占减去其他内容的100% */
 }
 
 .place-tab {
-    background: url("../pictures/tab.png") no-repeat;
+    background: url('../pictures/tab.png') no-repeat;
     width: 20px;
     height: 20px;
     background-size: 100%;
 }
 
-.mypage-date {
-    height: 42px;
-    font-size: 30px;
-    font-family: PingFangSC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #CED2D4;
-    line-height: 42px;
-    margin-bottom: 8px;
+.mypagr-header {
+    display: flex;
+    justify-content: space-between;
+    .mypage-date {
+        height: 42px;
+        font-size: 30px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #ced2d4;
+        line-height: 42px;
+        margin-bottom: 8px;
+    }
+    // .mypage-msg {
+    //     background: url(../pictures/nav_icon_meassage.png) no-repeat;
+    //     background-size: 20px 20px;
+    //     width: 20px;
+    //     height: 20px;
+    //     margin: 11px 0px;
+    // }
 }
 
 .mypage-knowtime {
@@ -70,7 +81,7 @@ ul设为1，占减去其他内容的100% */
     font-size: 16px;
     font-family: PingFangSC-Light, PingFang SC;
     font-weight: 300;
-    color: #CED2D4;
+    color: #ced2d4;
     line-height: 22.5px;
     margin-bottom: 28px;
 }
@@ -78,7 +89,7 @@ ul设为1，占减去其他内容的100% */
 .mypage-button {
     width: 96px;
     height: 32px;
-    background: #31A584;
+    background: #31a584;
     border-radius: 16px;
     border: none;
     outline: none;
@@ -90,7 +101,7 @@ ul设为1，占减去其他内容的100% */
     font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
-    color: #FFFFFF;
+    color: #ffffff;
     line-height: 20px;
 }
 
@@ -107,7 +118,7 @@ ul设为1，占减去其他内容的100% */
     font-weight: 500;
     line-height: 24px;
     margin-left: 20px; */
-    color: #CED2D4;
+    color: #ced2d4;
 }
 
 .instant {
@@ -116,20 +127,15 @@ ul设为1，占减去其他内容的100% */
     font-size: 17px;
     font-family: PingFangSC-Light, PingFang SC;
     font-weight: 300;
-    color: #8F959B;
+    color: #8f959b;
     line-height: 24px;
     margin-right: 20px;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
 }
 
 .li-mypage {
     list-style: none;
     width: 100%;
-    background: #34414A;
+    background: #34414a;
     box-shadow: 0px 16px 32px 0px rgba(26, 36, 42, 0.39);
     border-radius: 6px;
     margin-bottom: 12px;
@@ -137,12 +143,12 @@ ul {
     box-sizing: border-box;
 }
 
-p {
+.li-mypage p {
     margin: 0;
     font-size: 15px;
     font-family: PingFangSC-Light, PingFang SC;
     font-weight: 300;
-    color: #8F959B;
+    color: #8f959b;
     line-height: 22.5px;
     letter-spacing: 0.5px;
     margin-bottom: 20px;
@@ -155,7 +161,7 @@ p {
     font-size: 11px;
     font-family: PingFangSC-Light, PingFang SC;
     font-weight: 300;
-    color: #747A80;
+    color: #747a80;
     line-height: 15px;
     display: flex;
     justify-content: space-between;
@@ -174,9 +180,9 @@ p {
         font-size: 14px;
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
-        color: #FFFFFF;
+        color: #ffffff;
         line-height: 20px;
-        background: #BC9A7A;
+        background: #bc9a7a;
         border-radius: 16px;
         text-align: center;
     }

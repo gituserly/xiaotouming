@@ -1,0 +1,90 @@
+.ins-li {
+  list-style: none;
+  border-bottom: 1px solid #2b353d;
+  padding: 25px 0px;
+}
+
+.instantsquare-li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.instantsquare-li-header {
+  display: flex;
+}
+
+.instantsquare-li-userpicture {
+  width: 20px;
+  height: 20px;
+  margin: 5.5px 8px 5.5px 0px;
+}
+
+.instantsquare-li-username {
+  height: 18.5px;
+  font-size: 13px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #8f959b;
+  line-height: 18.5px;
+}
+
+.instantsquare-li-dayago {
+  height: 12.5px;
+  font-size: 9px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #747a80;
+  line-height: 12.5px;
+}
+
+.instantsquare-li-shenlue {
+  color: white;
+  span {
+    font-size: 22px;
+  }
+}
+
+.instantsquare-li-middle {
+  min-height: 200px;
+  font-size: 16px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #ced2d4;
+  line-height: 28px;
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+
+.instantsquare-li-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.instantsquare-li-lik-mes {
+  display: flex;
+}
+
+.instantsquare-li-time,
+.instantsquare-li-like,
+.instantsquare-li-message {
+  height: 16.5px;
+  font-size: 12px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #747a80;
+  line-height: 16.5px;
+}
+
+.instantsquare-li-like {
+  span {
+    margin-right: 4px;
+    font-size: 14px;
+    &.icon-collect-active {
+      color: #bf605c;
+    }
+  }
+}
+.instantsquare-li-message {
+  margin-left: 20px;
+}

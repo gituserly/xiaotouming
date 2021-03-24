@@ -1,22 +1,39 @@
-import React from "react";
-import "./Entervalidation.css";
-import history from "../utils/history";
-import ajax from "../utils/ajax";
-import queryString from "query-string";
+import React from 'react'
+import './Entervalidation.css'
+import history from '../utils/history'
+import ajax from '../utils/ajax'
+import Failed from '../components/failed'
+import queryString from 'query-string'
 
 export default class Entervalidation extends React.Component {
   state = {
-    validation: "",
-    isfail: false,
-  };
+    validation: '',
+    isfail: null,
+    countdown: 0,
+  }
+
+  componentDidMount() {
+    this.setState({ countdown: 60 })
+    this.doCountDown()
+  }
+  doCountDown = () => {
+    setTimeout(() => {
+      this.setState({ countdown: this.state.countdown - 1 }, () => {
+        console.log('state', this.state.countdown)
+        if (this.state.countdown > 0) {
+          this.doCountDown()
+        }
+      })
+    }, 1000)
+  }
 
   shuruValidation = (e) => {
-    const value = e.target.value;
-    const reg = /^\d*?$/;
-    const isCorrect = (reg.test(value) && value.length < 5) || value === "";
+    const value = e.target.value
+    const reg = /^\d*?$/
+    const isCorrect = (reg.test(value) && value.length < 5) || value === ''
     if (!isCorrect) {
-      console.log("don't number");
-      return;
+      console.log("don't number")
+      return
     }
 
     this.setState(
@@ -26,49 +43,51 @@ export default class Entervalidation extends React.Component {
       () => {
         if (value.length === 4) {
           setTimeout(() => {
-            this.input.scrollLeft = 0;
-          }, 0);
+            this.input.scrollLeft = 0
+          }, 0)
 
-          const parsed = queryString.parse(window.location.search);
+          const parsed = queryString.parse(window.location.search)
 
-          ajax(`authentication/openLogin`, "POST", {
+          ajax(`authentication/openLogin`, 'POST', {
             type: 1,
             phone: parsed.phone,
             code: this.state.validation,
           }).then(
             (rs) => {
-              console.log("validation success", rs);
-              localStorage.setItem("token", rs.token);
-              localStorage.setItem("userId", rs.open_id);
+              console.log('validation success', rs)
+              localStorage.setItem('token', rs.token)
+              localStorage.setItem('userId', rs.open_id)
 
-              history.push(rs.first_type ? `/page?phone=${parsed.phone}` : "/");
+              history.push(rs.first_type ? `/page?phone=${parsed.phone}` : '/')
             },
             (rej) => {
-              console.log(" validation reject", rej);
-              this.setState({ isfail: true });
+              console.log(' validation reject', rej)
+              this.setState({ isfail: rej })
             }
-          );
+          )
         }
       }
-    );
-  };
- againGet = () => {
-  const parsed = queryString.parse(window.location.search);
+    )
+  }
+  againGet = () => {
+    const parsed = queryString.parse(window.location.search)
     ajax(
       `authentication/code?phone=${parsed.phone}&sign=53ee50718b01b71c03fa47d352e0b667`,
-      "get"
+      'get'
     ).then(
       (rs) => {
-        console.log(" lagainGet success", rs);
-   
+        console.log('lagainGet success', rs)
+        this.setState({ countdown: 60 })
+        this.doCountDown()
       },
       (rej) => {
-        console.log("againGet reject", rej);
+        console.log('againGet reject', rej)
+        this.setState({ isfail: rej })
       }
-    );
-  };
-  backLogin=()=>{
-    history.push("/login")
+    )
+  }
+  backLogin = () => {
+    history.push('/login')
   }
   render() {
     return (
@@ -90,14 +109,22 @@ export default class Entervalidation extends React.Component {
               ))}
             </div>
           </div>
-          <div className="footer-va" onClick={this.againGet}>重新获取</div>
+          {this.state.countdown > 0 ? (
+            <div className="footer-disabled-va">
+              {this.state.countdown}s 重新获取
+            </div>
+          ) : (
+            <div className="footer-va" onClick={this.againGet}>
+              重新获取
+            </div>
+          )}
         </div>
-        {this.state.isfail === false ? null : (
-          <div className="fail-va">
-            <span className="fail-text">您输入的验证码有误</span>
-          </div>
-        )}
+
+        <Failed
+          defaultVisible={this.state.isfail}
+          text={this.state.isfail?.msg}
+        />
       </div>
-    );
+    )
   }
 }

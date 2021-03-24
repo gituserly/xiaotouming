@@ -1,397 +1,387 @@
 .instantdetails-content {
-    background-color: #303B45;
-    height: 100vh;
-    overflow-y: auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .instantdetails-main {
-    padding: 30px 24px;
+  padding: 0 24px 30px;
 }
 
 .instantdetails-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25.5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25.5px;
 }
 
 .instantdetails-datails {
-    display: flex;
+  display: flex;
 }
 
 .instantdetails-img1 {
-    background: url("../pictures/back.png") no-repeat;
-    background-size: 16px 16px;
-    width: 16px;
-    height: 16px;
-    margin: 4.5px 0px;
+  background: url('../pictures/back.png') no-repeat;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+  margin: 4.5px 0px;
 }
 
 .instantdetails-datails-word {
-    height: 25px;
-    font-size: 18px;
-    font-family: PingFangSC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #CED2D4;
-    line-height: 25px;
-    letter-spacing: 0.5px;
-    margin-left: 12px;
+  height: 25px;
+  font-size: 18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #ced2d4;
+  line-height: 25px;
+  letter-spacing: 0.5px;
+  margin-left: 12px;
 }
 
 .instantdetails-img2 {
-    background: url("../pictures/nav_icon_more.png") no-repeat;
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-    margin: 2.5px 0px;
+  background: url('../pictures/nav_icon_more.png') no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  margin: 2.5px 0px;
 }
 
 .instantdetails-username {
-    height: 20px;
-    font-size: 13px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #8F959B;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
+  height: 20px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #8f959b;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
 .instantdetails-u {
-    display: flex;
-    align-items: center;
-    .ins-msg {
-        background: url(../pictures/msg.png) no-repeat;
-        width: 12px;
-        height: 12px;
-        background-size: 100%;
-    }
+  display: flex;
+  align-items: center;
+  .ins-msg {
+    background: url(../pictures/msg.png) no-repeat;
+    width: 12px;
+    height: 12px;
+    background-size: 100%;
+  }
 }
 
 .instantdetails-like-count {
-    padding-left: 8px;
-    font-size: 12px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #747A80;
-    line-height: 12px;
-    display: flex;
-    align-items: center
+  padding-left: 8px;
+  font-size: 12px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #747a80;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .instantdetails-text {
-    width: 100%;
-    height: 308px;
-    font-size: 16px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #CED2D4;
-    line-height: 28px;
-    margin-bottom: 24px;
+  width: 100%;
+  height: 308px;
+  font-size: 16px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #ced2d4;
+  line-height: 28px;
+  margin-bottom: 24px;
 }
 
 .instantdetails-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .instantdetails-time {
-    height: 16.5px;
-    font-size: 12px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #747A80;
-    line-height: 16.5px;
-    letter-spacing: 0.5px;
+  height: 16.5px;
+  font-size: 12px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #747a80;
+  line-height: 16.5px;
+  letter-spacing: 0.5px;
 }
 
 .instantdetails-like {
-    height: 16.5px;
-    font-size: 12px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #747A80;
-    line-height: 16.5px;
-    letter-spacing: 0.5px;
-    display: flex;
-    text-align: center;
+  height: 16.5px;
+  font-size: 12px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #747a80;
+  line-height: 16.5px;
+  letter-spacing: 0.5px;
+  display: flex;
+  text-align: center;
 }
 
 .ins-img.likeing {
-    background-image: url('../pictures/love-highlight.png');
+  background-image: url('../pictures/love-highlight.png');
 }
 
 .instantdetails-thoughtcontent {
-    width: 100%;
-    border-top: 1px solid #2B353D;
+  width: 100%;
+  border-top: 1px solid #2b353d;
 }
 
 .instantdetails-thought {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 32px;
-    margin-bottom: 68px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-bottom: 68px;
 }
 
 .instantdetails-thought-word,
 .thought-release {
-    height: 20px;
-    font-size: 16px;
-    font-family: PingFangSC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #CED2D4;
-    line-height: 20px;
-    letter-spacing: 0.5px;
+  height: 20px;
+  font-size: 16px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #ced2d4;
+  line-height: 20px;
+  letter-spacing: 0.5px;
 }
 
 .instantdetails-thought-button {
-    width: 60px;
-    height: 24px;
-    background: #31A584;
-    border-radius: 16px;
-    border: none;
-    outline: none;
+  width: 60px;
+  height: 24px;
+  background: #31a584;
+  border-radius: 16px;
+  border: none;
+  outline: none;
 }
 
 .instantdetails-thought-button-word {
-    height: 20px;
-    font-size: 14px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #FFFFFF;
-    line-height: 20px;
+  height: 20px;
+  font-size: 14px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 20px;
 }
 
 .instantdetails-thought-instruction1 {
-    width: 100%;
-    height: 21px;
-    font-size: 14px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #747A80;
-    line-height: 21px;
-    text-align: center;
+  width: 100%;
+  height: 21px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #747a80;
+  line-height: 21px;
+  text-align: center;
 }
 
 .instantdetails-thought-instruction2 {
-    width: 100%;
-    height: 21px;
-    font-size: 14px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #747A80;
-    line-height: 21px;
-    text-align: center;
-    margin-top: 120px;
+  width: 100%;
+  height: 21px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #747a80;
+  line-height: 21px;
+  text-align: center;
+  margin-top: 120px;
 }
 
 .instantdetails-thought-release {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0px 24px;
-    background-color: #303B45;
-    padding: 12px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 24px;
+  background-color: #303b45;
+  padding: 12px 12px;
 }
 
 .thought-release {
-    text-align: right;
+  text-align: right;
 }
 
 .instantdetails-textarea {
-    width: 100%;
-    height: 200px;
-    background-color: #303B45;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-family: PingFangSC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #CED2D4;
-}
-
-ul,
-p {
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    list-style: none;
+  width: 100%;
+  height: 200px;
+  background-color: #303b45;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #ced2d4;
 }
 
 .li-instantdatails {
-    width: 100%;
-    margin-bottom: 28px;
+  width: 100%;
+  margin-bottom: 28px;
 }
 
 .thought-u {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .thought-p {
-    width: 100%;
-    font-size: 14px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #CED2D4;
-    line-height: 21px;
-    word-break: break-all;
+  width: 100%;
+  font-size: 14px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #ced2d4;
+  line-height: 21px;
+  word-break: break-all;
 }
 
 .instantdatails-thoughtcount {
-    height: 20px;
-    font-size: 13px;
-    font-family: PingFangSC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #BC9A7A;
-    line-height: 20px;
-    letter-spacing: 0.5px;
+  height: 20px;
+  font-size: 13px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #bc9a7a;
+  line-height: 20px;
+  letter-spacing: 0.5px;
 }
 
 .instantsquare-display {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0px 27px;
-    background: #2E353B;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 27px;
+  background: #2e353b;
 }
 
 .instantsquare-display-header,
 .instantsquare-display-middle {
-    display: flex;
+  display: flex;
 }
 
 .instantsquare-display-header {
-    border-bottom: 1px #262C32 solid;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  border-bottom: 1px #262c32 solid;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .instantsquare-display-middle {
-    border-bottom: 1px #262C32 solid;
-    padding-bottom: 10px;
-    margin-bottom: 25.5px;
-    padding: 20px 27px;
+  border-bottom: 1px #262c32 solid;
+  padding-bottom: 10px;
+  margin-bottom: 25.5px;
+  padding: 20px 27px;
 }
 
 .instantsquare-display-header-fcous,
 .instantsquare-display-header-unlike,
 .instantsquare-display-header-jubao {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .instantsquare-display-header-imgfcous.fcousing {
-    background-image: url("../pictures/icon_attention_selected.png");
+  background-image: url('../pictures/icon_attention_selected.png');
 }
 
 .instantsquare-display-header-imgunlike.unlikeing {
-    background-image: url("../pictures/icon_dilike_selectd.png");
+  background-image: url('../pictures/icon_dilike_selectd.png');
 }
 
 .instantsquare-display-header-imgfcous {
-    background: url("../pictures/icon_attention_normal.png") no-repeat;
-    background-size: 44px 44px;
-    width: 44px;
-    height: 44px;
+  background: url('../pictures/icon_attention_normal.png') no-repeat;
+  background-size: 44px 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .instantsquare-display-header-imgunlike {
-    background: url("../pictures/icon_dilike_normal.png") no-repeat;
-    background-size: 45px 45px;
-    width: 45px;
-    height: 45px;
+  background: url('../pictures/icon_dilike_normal.png') no-repeat;
+  background-size: 45px 45px;
+  width: 45px;
+  height: 45px;
 }
 
 .instantsquare-display-header-imgjubao {
-    background: url("../pictures/report.png") no-repeat;
-    background-size: 45px 45px;
-    width: 45px;
-    height: 45px;
+  background: url('../pictures/report.png') no-repeat;
+  background-size: 45px 45px;
+  width: 45px;
+  height: 45px;
 }
 
 .instantsquare-display-header-word {
-    width: 52px;
-    height: 18.5px;
-    font-size: 13px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #747A80;
-    line-height: 18.5px;
+  width: 52px;
+  height: 18.5px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #747a80;
+  line-height: 18.5px;
 }
 
 .instantsquare-display-header-friends,
 .instantsquare-display-header-unlike,
 .instantsquare-display-header-jubao {
-    margin-left: 52px;
+  margin-left: 52px;
 }
 
 .instantsquare-display-footer {
-    height: 21px;
-    font-size: 15px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #747A80;
-    line-height: 21px;
-    text-align: center;
-    padding-bottom: 15px;
+  height: 21px;
+  font-size: 15px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #747a80;
+  line-height: 21px;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .ins-img {
-    background: url("../pictures/love.png") no-repeat;
-    width: 16px;
-    height: 16px;
-    background-size: 100%;
+  background: url('../pictures/love.png') no-repeat;
+  width: 16px;
+  height: 16px;
+  background-size: 100%;
 }
 
 .instantdetalis-layer,
 .instantdetails-thought-show,
 .instantsquare-display-show {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    display: flex;
-    align-items: flex-end;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  background-color: rgba(#000, 0.4);
 }
 
 .instantdetalis-reply-comment {
+  width: 100%;
+  background-color: #37434d;
+  padding: 12px 24px;
+  &-text {
+    height: 22.5px;
+    font-size: 16px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #ced2d4;
+    line-height: 22.5px;
+    letter-spacing: 0.5px;
+  }
+  &-textarea {
+    height: 128px;
     width: 100%;
-    background-color: #37434D;
-    padding: 12px 24px;
-    &-text {
-        height: 22.5px;
-        font-size: 16px;
-        font-family: PingFangSC-Light, PingFang SC;
-        font-weight: 300;
-        color: #CED2D4;
-        line-height: 22.5px;
-        letter-spacing: 0.5px;
-    }
-    &-textarea {
-        height: 128px;
-        width: 100%;
-        background-color: #37434D;
-        border: none;
-        font-size: 16px;
-        font-family: PingFangSC-Light, PingFang SC;
-        font-weight: 300;
-        color: #CED2D4;
-        outline: none;
-    }
-    &-release {
-        height: 21px;
-        font-size: 15px;
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 500;
-        color: #747A80;
-        line-height: 21px;
-        text-align: right;
-    }
+    background-color: #37434d;
+    border: none;
+    font-size: 16px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #ced2d4;
+    outline: none;
+  }
+  &-release {
+    height: 21px;
+    font-size: 15px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #747a80;
+    line-height: 21px;
+    text-align: right;
+  }
 }
 
 .instantdetalis-reply-comment-release.active {
-    color: #BC9A7A
+  color: #bc9a7a;
 }

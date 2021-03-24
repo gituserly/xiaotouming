@@ -1,0 +1,19 @@
+.failed {
+  height: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  background-color: #cf5958;
+  font-size: 13px;
+  text-align: center;
+  line-height: 150px;
+  transform: translateY(-150px);
+  opacity: 0;
+  transition: all 0.2s;
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

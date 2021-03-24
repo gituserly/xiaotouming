@@ -1,0 +1,110 @@
+.release-comment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 30px;
+  box-sizing: border-box;
+  &-modal {
+    box-sizing: border-box;
+    height: calc(100vh - 30px);
+    background-color: #000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+  }
+  &-close {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    z-index: 1;
+    span {
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: calc(100vh - 130px);
+  background: #37434d;
+  border-radius: 6px;
+  color: #fff;
+  margin: 50px 30px;
+  padding: 12px;
+  .replay-number {
+    font-size: 14px;
+    margin: 20px 0;
+  }
+  &-body {
+    overflow-y: auto;
+    flex: 1;
+  }
+}
+
+.reply-item {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      display: flex;
+      align-items: center;
+    }
+    img {
+      display: block;
+      width: 20px;
+      margin-right: 10px;
+    }
+    span {
+      height: 18.5px;
+      font-size: 13px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #8f959b;
+      line-height: 18.5px;
+    }
+  }
+  &-content {
+    font-size: 16px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #ced2d4;
+    line-height: 28px;
+    margin-bottom: 20px;
+    word-break: break-all;
+    margin-top: 10px;
+  }
+}
+
+.send-comment-box {
+  position: relative;
+  padding: 12px 0;
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ced2d4;
+    border-radius: 15px;
+    padding: 0 10px;
+    outline: 0;
+    appearance: none;
+    background-color: transparent;
+    color: #ced2d4;
+  }
+  .send-btn {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+  }
+}

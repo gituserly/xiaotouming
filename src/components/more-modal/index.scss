@@ -1,0 +1,99 @@
+.instantsquare-display-show {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  background-color: rgba(#000, 0.4);
+}
+
+.instantsquare-display {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 27px;
+  background: #2e353b;
+}
+
+.instantsquare-display-header,
+.instantsquare-display-middle {
+  display: flex;
+}
+
+.instantsquare-display-header {
+  border-bottom: 1px #262c32 solid;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.instantsquare-display-middle {
+  border-bottom: 1px #262c32 solid;
+  padding-bottom: 10px;
+  margin-bottom: 25.5px;
+  padding: 20px 27px;
+}
+
+.instantsquare-display-header-fcous,
+.instantsquare-display-header-unlike,
+.instantsquare-display-header-jubao {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.instantsquare-display-header-imgfcous.fcousing {
+  background-image: url('../../pictures/icon_attention_selected.png');
+}
+
+.instantsquare-display-header-imgunlike.unlikeing {
+  background-image: url('../../pictures/icon_dilike_selectd.png');
+}
+
+.instantsquare-display-header-imgfcous {
+  background: url('../../pictures/icon_attention_normal.png') no-repeat;
+  background-size: 44px 44px;
+  width: 44px;
+  height: 44px;
+}
+
+.instantsquare-display-header-imgunlike {
+  background: url('../../pictures/icon_dilike_normal.png') no-repeat;
+  background-size: 45px 45px;
+  width: 45px;
+  height: 45px;
+}
+
+.instantsquare-display-header-imgjubao {
+  background: url('../../pictures/report.png') no-repeat;
+  background-size: 45px 45px;
+  width: 45px;
+  height: 45px;
+}
+
+.instantsquare-display-header-word {
+  width: 52px;
+  height: 18.5px;
+  font-size: 13px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #747a80;
+  line-height: 18.5px;
+}
+
+.instantsquare-display-header-friends,
+.instantsquare-display-header-unlike,
+.instantsquare-display-header-jubao {
+  margin-left: 52px;
+}
+
+.instantsquare-display-footer {
+  height: 21px;
+  font-size: 15px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #747a80;
+  line-height: 21px;
+  text-align: center;
+  padding-bottom: 15px;
+}
