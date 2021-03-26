@@ -1,7 +1,7 @@
 @import "./MyAllstyle.scss";
 .message-main {
     background: $myBkg;
-    min-height: 100vh;
+    // min-height: 100vh;
     padding: 30px 24px;
 }
 
@@ -75,3 +75,7 @@ li {
         letter-spacing: 0.5px;
     }
 }
+.mymessage-content {
+    height: 100%;
+    overflow-y: auto;
+  }

@@ -6,28 +6,55 @@ import history from "../utils/history";
 export default class Message extends React.Component {
   state = {
     msglist: [],
+    page:1,
+    loading:false,
+    megcount:0
   };
 
   componentDidMount() {
-    this.getMessage();
+    this.getMessage(1);
   }
-  getMessage = () => {
+  getMessage = (page=1) => {
+    this.setState({loading:true})
     ajax(
-      `message?user_id=${localStorage.getItem("userId")}&page=1`,
+      `message?user_id=${localStorage.getItem("userId")}&page=${page}`,
       "GET"
     ).then(
       (res) => {
         console.log("getmessage user success ", res);
-        this.setState({ msglist: res.list });
+        this.setState({
+          msglist:[...this.state.msglist,...res.list],loading:false,page
+        });
       },
       (rej) => {
         console.log("getmessage user fail ", rej);
+        this.setState({loading:false})
       }
-    );
+    )
+      
+    
+    
   };
   backMypage = () => {
     history.push("/");
   };
+  onScroll = (e) => {
+     console.log("e.target",e.target)
+    
+    const offsetHeight = e.target.offsetHeight
+    
+    const scrollHeight = e.target.scrollHeight
+    
+    const scrollTop = e.target.scrollTop
+    
+    const distance = scrollHeight - offsetHeight
+   
+    if (
+      distance - scrollTop < 5 
+    ) {
+      this.getMessage(this.state.page + 1)
+    }
+  }
 
   renderContent = (item) => {
     switch (item.msg_type) {
@@ -37,6 +64,18 @@ export default class Message extends React.Component {
             <div className="message-middle-comment-reply">
               {item.action_user.forum_nike_name}
               评论了你:{item.comment.comment_content}
+            </div>
+
+            <div className="message-middle-comment-dayago">{item.msg_date}</div>
+          </div>
+        );
+        
+        case "9":
+        return (
+          <div className="message-middle-comment">
+            <div className="message-middle-comment-reply">
+              {item.action_user.forum_nike_name}
+              回复了你:{item.comment.comment_content}
             </div>
 
             <div className="message-middle-comment-dayago">{item.msg_date}</div>
@@ -65,6 +104,17 @@ export default class Message extends React.Component {
             <div className="message-middle-comment-dayago">{item.msg_date}</div>
           </div>
         );
+        case "5":
+          return (
+            <div className="message-middle-comment">
+              <div className="message-middle-comment-reply">
+                {item.action_user.forum_nike_name}
+                赞同了你的评论
+              </div>
+  
+              <div className="message-middle-comment-dayago">{item.msg_date}</div>
+            </div>
+          );
     }
   };
   render() {
@@ -74,7 +124,7 @@ export default class Message extends React.Component {
           <div className="message-header-img1" onClick={this.backMypage}></div>
           <div className="message-header-title"> 评论与通知</div>
         </div>
-        <div>
+        <div className="mymessage-content" onScroll={this.onScroll}>
           <ul>
             {this.state.msglist.map((item) => (
               <li className="message-middles" key={item.msg_time}>

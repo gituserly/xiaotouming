@@ -6,8 +6,9 @@ export default function ajax(url, xtmmethod, xtmbody = {}) {
         token: localStorage.getItem('token'),
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
-    }
+     }
     const baseUrl = 'http://xtm.xiaoyunqiang.top/'
+    // const baseUrl = 'http://xtm.urqnu.com/'
     if (xtmmethod === 'POST') {
       const formBody = []
       for (let key in xtmbody) {
