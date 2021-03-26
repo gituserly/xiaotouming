@@ -13,6 +13,7 @@ export default class Message extends React.Component {
 
   componentDidMount() {
     this.getMessage(1);
+    //-----------
   }
   getMessage = (page=1) => {
     this.setState({loading:true})

@@ -13,6 +13,7 @@ export default class Commentreply extends React.Component {
     replylist: [],
   }
   getCommentdetalis = () => {
+    //
     const par = queryString.parse(window.location.search)
     ajax(
       `comment/${par.id}?user_id=${localStorage.getItem('userId')}`,
