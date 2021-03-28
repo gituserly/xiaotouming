@@ -1,130 +1,126 @@
-import React from "react";
-import "./Message.scss";
-import ajax from "../utils/ajax";
-import history from "../utils/history";
+import React from 'react'
+import Navbar from '../components/navbar'
+import './Message.scss'
+import ajax from '../utils/ajax'
+import history from '../utils/history'
 
 export default class Message extends React.Component {
   state = {
     msglist: [],
-    page:1,
-    loading:false,
-    megcount:0
-  };
+    page: 1,
+    loading: false,
+    megcount: 0,
+    hasEnd: false,
+  }
 
   componentDidMount() {
-    this.getMessage(1);
+    this.getMessage(1)
     //-----------
   }
-  getMessage = (page=1) => {
-    this.setState({loading:true})
+  getMessage = (page = 1) => {
+    this.setState({ loading: true })
     ajax(
-      `message?user_id=${localStorage.getItem("userId")}&page=${page}`,
-      "GET"
+      `message?user_id=${localStorage.getItem('userId')}&page=${page}`,
+      'GET'
     ).then(
       (res) => {
-        console.log("getmessage user success ", res);
+        console.log('getmessage user success ', res)
+        if (!res) {
+          return this.setState({ hasEnd: true })
+        }
         this.setState({
-          msglist:[...this.state.msglist,...res.list],loading:false,page
-        });
+          msglist: [...this.state.msglist, ...res.list],
+          loading: false,
+          page,
+        })
       },
       (rej) => {
-        console.log("getmessage user fail ", rej);
-        this.setState({loading:false})
+        console.log('getmessage user fail ', rej)
+        this.setState({ loading: false })
       }
     )
-      
-    
-    
-  };
+  }
   backMypage = () => {
-    history.push("/");
-  };
+    history.push('/')
+  }
   onScroll = (e) => {
-     console.log("e.target",e.target)
-    
-    const offsetHeight = e.target.offsetHeight
-    
-    const scrollHeight = e.target.scrollHeight
-    
-    const scrollTop = e.target.scrollTop
-    
-    const distance = scrollHeight - offsetHeight
+    if (this.state.hasEnd) return
    
-    if (
-      distance - scrollTop < 5 
-    ) {
+
+    const offsetHeight = e.target.offsetHeight
+
+    const scrollHeight = e.target.scrollHeight
+
+    const scrollTop = e.target.scrollTop
+
+    const distance = scrollHeight - offsetHeight
+
+    if (distance - scrollTop < 5) {
       this.getMessage(this.state.page + 1)
     }
   }
 
   renderContent = (item) => {
     switch (item.msg_type) {
-      case "8":
+      case '8':
         return (
           <div className="message-middle-comment">
             <div className="message-middle-comment-reply">
-              {item.action_user.forum_nike_name}
-              评论了你:{item.comment.comment_content}
+              {item.action_user.forum_nike_name}&nbsp; 评论了你:{' '}
+              <span>{item.comment.comment_content}</span>
             </div>
 
             <div className="message-middle-comment-dayago">{item.msg_date}</div>
           </div>
-        );
-        
-        case "9":
+        )
+
+      case '9':
         return (
           <div className="message-middle-comment">
             <div className="message-middle-comment-reply">
-              {item.action_user.forum_nike_name}
-              回复了你:{item.comment.comment_content}
+              {item.action_user.forum_nike_name}&nbsp; 回复了你:{' '}
+              <span>{item.comment.comment_content}</span>
             </div>
 
             <div className="message-middle-comment-dayago">{item.msg_date}</div>
           </div>
-        );
+        )
 
-      case "1":
+      case '1':
         return (
           <div className="message-middle-comment">
             <div className="message-middle-comment-reply">
-              {item.action_user.forum_nike_name}
-              关注了你瞬间
+              {item.action_user.forum_nike_name}&nbsp; 关注了你瞬间
             </div>
 
             <div className="message-middle-comment-dayago">{item.msg_date}</div>
           </div>
-        );
-      case "3":
+        )
+      case '3':
         return (
           <div className="message-middle-comment">
             <div className="message-middle-comment-reply">
-              {item.action_user.forum_nike_name}
-              认同了你想法
+              {item.action_user.forum_nike_name}&nbsp; 认同了你想法
             </div>
 
             <div className="message-middle-comment-dayago">{item.msg_date}</div>
           </div>
-        );
-        case "5":
-          return (
-            <div className="message-middle-comment">
-              <div className="message-middle-comment-reply">
-                {item.action_user.forum_nike_name}
-                赞同了你的评论
-              </div>
-  
-              <div className="message-middle-comment-dayago">{item.msg_date}</div>
+        )
+      case '5':
+        return (
+          <div className="message-middle-comment">
+            <div className="message-middle-comment-reply">
+              {item.action_user.forum_nike_name}&nbsp; 赞同了你的评论
             </div>
-          );
+
+            <div className="message-middle-comment-dayago">{item.msg_date}</div>
+          </div>
+        )
     }
-  };
+  }
   render() {
     return (
-      <div className="message-main">
-        <div className="message-header">
-          <div className="message-header-img1" onClick={this.backMypage}></div>
-          <div className="message-header-title"> 评论与通知</div>
-        </div>
+      <Navbar title="评论与通知">
         <div className="mymessage-content" onScroll={this.onScroll}>
           <ul>
             {this.state.msglist.map((item) => (
@@ -145,7 +141,7 @@ export default class Message extends React.Component {
             ))}
           </ul>
         </div>
-      </div>
-    );
+      </Navbar>
+    )
   }
 }

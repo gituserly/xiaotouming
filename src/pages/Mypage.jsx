@@ -128,16 +128,9 @@ export default class Mypage extends React.Component {
 
     return (
       <div className="mypage-main">
-        {/*  <div className="mypage-place">
-          <div className="s">
-            <span className="place-position"></span>
-            <span className="place-name">上海</span>
-          </div>
-         <div className="place-tab"></div> 
-        </div>*/}
         <div className="mypagr-header">
-        <div className="mypage-date">{this.state.today}</div>
-        <div className="mypage-msg"></div>
+          <div className="mypage-date">{this.state.today}</div>
+          <div className="mypage-msg"></div>
         </div>
         <div className="mypage-knowtime">{this.state.knowtime.home_text}</div>
         <div>
@@ -170,6 +163,12 @@ export default class Mypage extends React.Component {
           onTouchMove={this.onTouchMove}
           onTouchEnd={this.onTouchEnd}
         >
+          {showList.length === 0 && (
+            <div className="scroll-box-tip">
+              <p>悄悄告诉你</p>
+              <p>下拉页面就能看到别人的瞬间哦</p>
+            </div>
+          )}
           <ul>
             {showList.map((item) => {
               const tm = conversionTime(item.create_time, 'Y/M/D H:m')

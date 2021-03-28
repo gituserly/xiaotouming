@@ -1,189 +1,197 @@
 .mypage-main {
-    background: #303b45;
-    padding: 31.5px 24px 25.5px 24px;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-    box-sizing: border-box;
+  background: #303b45;
+  padding: 31.5px 24px 25.5px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .scroll-box {
-    flex: 1;
-    overflow-y: auto;
+  flex: 1;
+  overflow-y: auto;
+  .scroll-box-tip {
+    font-size: 13px;
+    font-family: PingFangSC-Light, PingFang SC;
+    font-weight: 300;
+    color: #747c7e;
+    line-height: 18px;
+    text-align: center;
+    margin-top: 100px;
+  }
 }
-
 
 /* 设置ul中li内部滑动，而不是窗口滑动，在mypage-main中设置flex，
 默认水平，各块div水平粘在一起，所以改为column，垂直方向，box-sizing为border-box，
 ul设为1，占减去其他内容的100% */
 
 .mypage-place {
-    height: 20px;
-    margin-bottom: 23.5px;
-    display: flex;
-    justify-content: space-between;
+  height: 20px;
+  margin-bottom: 23.5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .s {
-    display: flex;
+  display: flex;
 }
 
 .place-name {
-    display: inline-block;
-    height: 20px;
-    font-size: 14px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #ced2d4;
-    line-height: 20px;
+  display: inline-block;
+  height: 20px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #ced2d4;
+  line-height: 20px;
 }
 
 .place-position {
-    background: url('../pictures/position.png') no-repeat;
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    background-size: 100%;
-    margin: 2px;
+  background: url('../pictures/position.png') no-repeat;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-size: 100%;
+  margin: 2px;
 }
 
 .place-tab {
-    background: url('../pictures/tab.png') no-repeat;
-    width: 20px;
-    height: 20px;
-    background-size: 100%;
+  background: url('../pictures/tab.png') no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 100%;
 }
 
 .mypagr-header {
-    display: flex;
-    justify-content: space-between;
-    .mypage-date {
-        height: 42px;
-        font-size: 30px;
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 500;
-        color: #ced2d4;
-        line-height: 42px;
-        margin-bottom: 8px;
-    }
-    // .mypage-msg {
-    //     background: url(../pictures/nav_icon_meassage.png) no-repeat;
-    //     background-size: 20px 20px;
-    //     width: 20px;
-    //     height: 20px;
-    //     margin: 11px 0px;
-    // }
+  display: flex;
+  justify-content: space-between;
+  .mypage-date {
+    height: 42px;
+    font-size: 30px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #ced2d4;
+    line-height: 42px;
+    margin-bottom: 8px;
+  }
+  // .mypage-msg {
+  //     background: url(../pictures/nav_icon_meassage.png) no-repeat;
+  //     background-size: 20px 20px;
+  //     width: 20px;
+  //     height: 20px;
+  //     margin: 11px 0px;
+  // }
 }
 
 .mypage-knowtime {
-    height: 22.5px;
-    font-size: 16px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #ced2d4;
-    line-height: 22.5px;
-    margin-bottom: 28px;
+  height: 22.5px;
+  font-size: 16px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #ced2d4;
+  line-height: 22.5px;
+  margin-bottom: 28px;
 }
 
 .mypage-button {
-    width: 96px;
-    height: 32px;
-    background: #31a584;
-    border-radius: 16px;
-    border: none;
-    outline: none;
-    margin-bottom: 40px;
+  width: 96px;
+  height: 32px;
+  background: #31a584;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  margin-bottom: 40px;
 }
 
 .mypage-button-text {
-    height: 20px;
-    font-size: 14px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #ffffff;
-    line-height: 20px;
+  height: 20px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 20px;
 }
 
 .mypage-text {
-    display: flex;
-    margin-bottom: 24.5px;
+  display: flex;
+  margin-bottom: 24.5px;
 }
 
 .instant.active {
-    /* width: 34px;
+  /* width: 34px;
     height: 24px;
     font-size: 17px;
     font-family: PingFangSC-Medium, PingFang SC;
     font-weight: 500;
     line-height: 24px;
     margin-left: 20px; */
-    color: #ced2d4;
+  color: #ced2d4;
 }
 
 .instant {
-    width: 34px;
-    height: 24px;
-    font-size: 17px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #8f959b;
-    line-height: 24px;
-    margin-right: 20px;
+  width: 34px;
+  height: 24px;
+  font-size: 17px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #8f959b;
+  line-height: 24px;
+  margin-right: 20px;
 }
 
 .li-mypage {
-    list-style: none;
-    width: 100%;
-    background: #34414a;
-    box-shadow: 0px 16px 32px 0px rgba(26, 36, 42, 0.39);
-    border-radius: 6px;
-    margin-bottom: 12px;
-    padding: 12px;
-    box-sizing: border-box;
+  list-style: none;
+  width: 100%;
+  background: #34414a;
+  box-shadow: 0px 16px 32px 0px rgba(26, 36, 42, 0.39);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  padding: 12px;
+  box-sizing: border-box;
 }
 
 .li-mypage p {
-    margin: 0;
-    font-size: 15px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #8f959b;
-    line-height: 22.5px;
-    letter-spacing: 0.5px;
-    margin-bottom: 20px;
-    word-break: break-all;
+  margin: 0;
+  font-size: 15px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #8f959b;
+  line-height: 22.5px;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  word-break: break-all;
 }
 
 .li-div {
-    width: 100%;
-    height: 15px;
-    font-size: 11px;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: #747a80;
-    line-height: 15px;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  height: 15px;
+  font-size: 11px;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: #747a80;
+  line-height: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .mypage-message {
-    height: 24px;
-    position: fixed;
-    top: 30px;
-    left: 0;
-    right: 0;
-    box-sizing: border-box;
-    padding: 0px 135px;
-    &-text {
-        height: 20px;
-        font-size: 14px;
-        font-family: PingFangSC-Regular, PingFang SC;
-        font-weight: 400;
-        color: #ffffff;
-        line-height: 20px;
-        background: #bc9a7a;
-        border-radius: 16px;
-        text-align: center;
-    }
+  height: 24px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 0px 135px;
+  &-text {
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 20px;
+    background: #bc9a7a;
+    border-radius: 16px;
+    text-align: center;
+  }
 }

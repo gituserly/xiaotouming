@@ -8,21 +8,45 @@ export default class MoreModal extends Component {
     isreply: false,
     isfcous: false,
     isdianzan: false,
+    col_flag:this.props.flag
   }
 
   fcousUser = () => {
-    ajax(
-      `forum/collection/${localStorage.getItem('userId')}_${this.props.id}`,
-      'POST'
-    ).then(
-      (res) => {
-        console.log('fcous user success ', res)
-        this.setState({ isfcous: true })
-      },
-      (rej) => {
-        console.log('fcous user fail ', rej)
-      }
-    )
+    console.log("this.props.flage",this.props.flag)
+   
+    if(this.state.col_flag==2)
+    {
+      ajax(
+        `forum/collection/${localStorage.getItem('userId')}_${this.props.id}`,
+        'POST'
+      ).then(
+        (res) => {
+          console.log('fcous user success ', res)
+          this.setState({ col_flag: 1 })
+        },
+        (rej) => {
+          console.log('fcous user fail ', rej)
+        }
+      )
+
+    }
+    if(this.state.col_flag===1)
+    {
+      ajax(
+        `forum/collection/${localStorage.getItem('userId')}_${this.props.id}`,
+        'DELETE'
+      ).then(
+        (res) => {
+          console.log('quxiao fcous user success ', res)
+          this.setState({ col_flag: 2})
+        },
+        (rej) => {
+          console.log('quxiao fcous user fail ', rej)
+        }
+      )
+
+    }
+  
   }
 
   render() {
@@ -39,7 +63,7 @@ export default class MoreModal extends Component {
             >
               <div
                 className={`instantsquare-display-header-imgfcous ${
-                  this.state.isfcous === true ? 'fcousing' : ''
+                  this.state.col_flag===1? 'fcousing' : ''
                 }`}
               ></div>
               <div className="instantsquare-display-header-word">关注</div>
