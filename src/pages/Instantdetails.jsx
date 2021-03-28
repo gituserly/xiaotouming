@@ -366,6 +366,7 @@ export default class Instantdetails extends React.Component {
               <MoreModal
                 id={this.state.list.id}
                 flag={this.state.list.collection_flag}
+                unflag={this.state.list.unfavor_flag}
                 onClose={() => this.setState({ isdispaly: false })}
               />
             )}

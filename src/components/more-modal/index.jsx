@@ -8,7 +8,8 @@ export default class MoreModal extends Component {
     isreply: false,
     isfcous: false,
     isdianzan: false,
-    col_flag:this.props.flag
+    col_flag:this.props.flag,
+    un_flag:this.props.unflag
   }
 
   fcousUser = () => {
@@ -49,6 +50,43 @@ export default class MoreModal extends Component {
   
   }
 
+  notLike = () => {
+    console.log("this.props.flage",this.props.flag)
+   
+    if(this.state.un_flag==2)
+    {
+      ajax(
+        `forum/unfavor/${localStorage.getItem('userId')}_${this.props.id}`,
+        'POST'
+      ).then(
+        (res) => {
+          console.log('unfavor success ', res)
+          this.setState({ un_flag: 1 })
+        },
+        (rej) => {
+          console.log('unfavor fail ', rej)
+        }
+      )
+
+    }
+    if(this.state.un_flag===1)
+    {
+      ajax(
+        `forum/unfavor/${localStorage.getItem('userId')}_${this.props.id}`,
+        'DELETE'
+      ).then(
+        (res) => {
+          console.log('quxiao unfavor success ', res)
+          this.setState({ un_flag: 2})
+        },
+        (rej) => {
+          console.log('quxiao unfavor fail ', rej)
+        }
+      )
+
+    }
+  
+  }
   render() {
     return (
       <div className="instantsquare-display-show" onClick={this.props.onClose}>
@@ -70,13 +108,11 @@ export default class MoreModal extends Component {
             </div>
             <div
               className="instantsquare-display-header-unlike"
-              onClick={() => {
-                this.setState({ isdianzan: true })
-              }}
+              onClick={this.notLike}
             >
               <div
                 className={`instantsquare-display-header-imgunlike ${
-                  this.state.isdianzan === true ? 'unlikeing' : ''
+                  this.state.un_flag === 1 ? 'unlikeing' : ''
                 }`}
               ></div>
               <div className="instantsquare-display-header-word">不喜欢</div>
